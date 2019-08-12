@@ -5,7 +5,6 @@ import sys
 import pprint
 
 
-
 header = """
 ################################################################################################################
 # Generated COE inventory using  coe_inv.py against a csv (MSDOS) Excel export
@@ -175,14 +174,30 @@ def main():
 	
 		inv_ = csv.DictReader(inv, dialect='excel', delimiter=',')
 		pod_result = filter(lambda x: x["POD"] == pod , inv_)
+		if len(pod_result) == 0:
+			print("ERR  POD{0} data not found,check csv file ... exiting".format(pod))
+			return
+		
 		docker_regs = filter(lambda x: x["Type"] == "ch-drg", pod_result)
-		vmr_result = filter(lambda x: discern_vmr(x["Description\xff"], vmr), pod_result)	
-		dpl = filter(lambda x: x["Type"] == "ci-dpl", vmr_result)
-		yum_repo = dpl[0]["IPv4"]
-		deployer = dpl[0] 
-		vips = filter(lambda x: x["Type"] == "ci-klv",vmr_result)
-		pod_vip =  vips[0]["IPv4"]
-		pod_eth = vips[0]["Interface\xff"]
+		vmr_result = filter(lambda x: discern_vmr(x["Description\xff"], vmr), pod_result)
+		if len(pod_result) == 0:
+			print("ERR  POD{0} VMR {1} data not found,check csv file ... exiting".format(pod,vmr))
+			return
+		try:
+			dpl = filter(lambda x: x["Type"] == "ci-dpl", vmr_result)
+			yum_repo = dpl[0]["IPv4"]
+			deployer = dpl[0]
+		except:
+			print "# WARNING  deployer not detected for this POD, check for typos and format correctness or edit inventory manually"
+			pass
+		try:	
+			vips = filter(lambda x: x["Type"] == "ci-klv",vmr_result)
+			pod_vip =  vips[0]["IPv4"]
+			pod_eth = vips[0]["Interface\xff"]
+		except:
+			print "# WARNING  minion  vips not detected for this POD, check for typos and format correctness or edit inventory manually"
+			pass
+	
 		minions = filter(lambda x: x["Type"] == "ci-knd",vmr_result)
 		masters = filter(lambda x: x["Type"] == "ci-kmr",vmr_result)
 		routersets = filter(lambda x: x["Type"] == "ci-knv",vmr_result)
@@ -274,6 +289,7 @@ def print_minion(row):
 
 def print_master(row):
 	print("{0} ansible_ssh_host={1} openshift_ip={1} openshift_public_ip={1} openshift_public_hostname={0} openshift_hostname={0} openshift_schedulable=false".format(row['Hostname\xff'], row['IPv4']))
+
 
 
 if __name__ == '__main__':
