@@ -1,0 +1,450 @@
+################################################################################################################
+# SAMPLE inventory (owner: SAMPLE (sample) (sample@cisco.com))
+#
+# For a full set of options and values see:
+# https://raw.githubusercontent.com/openshift/openshift-ansible/master/inventory/byo/hosts.origin.example
+# ../openshift-ansible/inventory/byo/hosts.origin.example
+#
+# When adding labels to your nodes please follow the guidance in this document:
+# https://wiki.cisco.com/pages/viewpage.action?pageId=64776674
+################################################################################################################
+
+
+[all:vars]
+cluster_timezone=UTC
+
+### We are separating the process of upgrading cluster node operating systems from upgrading Openshift
+### with this, we will no longer need to reboot the nodes after the pre-installation step
+### this action is selectable now, with the following option. Normally now set to false.
+reboot_after_preinstall=false
+reboot_timeout_after_preinstall=120
+reboot_pause_after_preinstall=10
+
+openshift_master_default_subdomain=ladc.ca.charter.com
+
+### In a HA LB cluster     | the <MASTER-API-HOSTNAME> will the NAME of the keepalived_vip (eg ‚Äòivpcoe-vip‚Äô)
+### In a non HA LB cluster | the <MASTER-API-HOSTNAME> will the NAME of the main LB (eg 'ivpcoe-lb1')
+### With a single Master   | the <MASTER-API-HOSTNAME> will the NAME of the MASTER node (eg ‚Äòivpcoe-master1‚Äô)
+### In all cases use NAMEs NOT IP Addresses.
+### In all cases DO NOT append DNS domainname.
+openshift_master_cluster_hostname=ladcca-ci-klv-1101
+openshift_master_cluster_public_hostname=ladcca-ci-klv-1101.ladc.ca.charter.com
+
+### In a HA LB cluster     | set the <Virtual Floating IP> to the VIP ip and configure the <MASTER-API-FQDN> above
+###                        | COE is 'magic' and will work out everything for you from these settings
+### Access the UI          | insert the VIP and <MASTER-API-FQDN> in the hosts file on your local device
+###                        | or define it in your DNS (no not the Openshift clusters DNS or host file)
+### keepalived_vrrpid      | is an integer between 1-255 for the VRRPID that is unique to the clusters subnet
+keepalived_vip=47.3.0.24
+keepalived_interface=eth0
+keepalived_vrrpid=15
+
+
+### We are separating the process of upgrading cluster node operating systems from upgrading Openshift
+### with this, we will no longer need to run an yum upgrade all in the pre-installation step
+### this action is selectable now, with the following option. Normally now set to false.
+yum_upgrade_during_preinstall=false
+
+yumrepo_url=http://47.3.0.22/centos/7/
+
+#values may be a comma separated list to specify additional registries
+#the deployers registry (eg <DEPLOYER-IP>:5000) must be the first entry in this list
+openshift_docker_additional_registries=47.3.0.22:5000,47.3.5.133:5000
+openshift_docker_insecure_registries=47.3.0.22:5000,47.3.5.133:5000
+
+
+openshift_docker_blocked_registries=docker.io
+
+#optional list of ntp server(s) accessible to all cluster nodes (with alternative examples)
+#setting a value overrides the default upstream ntp server list
+##ntp_servers=["<NTP_SERVER1>","<NTP_SERVER2>","<NTP_SERVER3>"]
+ntp_servers=["71.10.216.7","71.10.216.8"]
+
+openshift_disable_check=disk_availability,docker_storage,docker_image_availability,package_availability
+
+### Apply additional performance tuning via custom tuned profile for specific use cases such as:
+### - Data Plane (dp), Control Plane (cp), etc.
+#
+# coe_tuned_profile controls what tuned profile to apply after the COE is deployed and has the following
+# format:
+#        coe_tuned_profile=<profile_name>
+# where profile_name can be set to DataPlane, ControlPlane, etc. Please note that these tuned profiles
+# are mutually exclusive and only one of them MUST be specified.
+#
+# By default, coe_tuned_profile is not set and thus COE tuned profile functionality is disabled.
+# Currently only "DataPlane" profile is supported and can be enabled by uncommenting the following line.
+coe_tuned_profile=DataPlane
+
+
+
+# Create an OSEv3 group that contains the masters and nodes groups
+[OSEv3:children]
+masters
+nodes
+etcd
+lb
+gluster
+new_nodes
+
+
+# Set variables common for all OSEv3 hosts
+[OSEv3:vars]
+ansible_ssh_user=root
+ansible_become=true
+debug_level=2
+deployment_type=origin
+openshift_image_tag=v3.7.2
+openshift_install_examples=false
+openshift_master_cluster_method=native
+openshift_pkg_version=-3.7.2
+openshift_release=v3.7
+
+# increase max number of inflight requests
+openshift_master_max_requests_inflight=1000
+
+# Change the service public host range on hosts should you need it
+#    default range is 30000-32767
+openshift_node_port_range=9000-9999
+
+#############################################################################################################
+
+### GlusterFS Container Native Storage (CNS) configuration ###
+###    The CNS implementation does use the hosted OpenShift router and as such you must
+###    enable the `openshift_hosted_manage_router=True`
+###  Warning !!
+###     - Make sure the `openshift_hosted_router_selector` value is set only for GlusterFS nodes
+###     and doesn't clash with Bespoke IPfailOver labels
+###
+###  NOTE:
+###     - full list see https://github.com/openshift/openshift-ansible/tree/release-3.7/roles/openshift_storage_glusterfs
+###     - you must add/ have a resolvable FQDN heketi-storage-glusterfs.<DOMAIN>
+###       where <DOMAIN> value was defined in 'openshift_master_default_subdomain'
+
+#############################################################################################################
+
+## By default the StorageClass is created which allows Dynamic Provision out of the box
+##  Should you want to reverse the behaviour, set the value to 'False'
+openshift_storage_glusterfs_block_storageclass=True
+
+openshift_storage_glusterfs_namespace=glusterfs
+openshift_storage_glusterfs_name=storage
+
+## Overwrite the default GlusterFS images path so we can have a unified/ single
+## docker registry path location
+##  Warning !!
+##      Don't change the values!!
+openshift_storage_glusterfs_image="openshift/gluster-centos"
+openshift_storage_glusterfs_block_image="openshift/glusterblock-provisioner"
+openshift_storage_glusterfs_heketi_image="openshift/heketi"
+
+
+
+# Password Identity Provider
+# To enable it un-comment the 2 variables in place
+# Generated Password is stored in ivp-coe/.originrc_<MASTER-API-FQDN>
+# If re-installation/upgrade is run then the old file is backed up and a new password file is generated
+# ### openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/master/htpasswd'}]
+# ### openshift_master_htpasswd_file="/tmp/.authT1"
+
+
+################################################################################################################
+
+### Standard OpenShift Router configuration FOR GlusterFS pods only ###
+###  To use the standard Openshift Origin Router on port 80/443 for GlusterFS
+###  set the value below to true
+###  WARNING !!!
+###     Make sure the below parameters don't clash with Bespoke IPFailover router (if enabled)
+###        * labels/ K=V and
+###        * `openshift_node_labels`
+
+openshift_hosted_manage_router=true
+openshift_hosted_router_selector='used_by=glusterfs'
+
+################################################################################################################
+
+### (Bespoke to CISCO) IPFailOver configuration for ipfailover/router pairs
+### These are the router/ipf pairs for pods/containers NOT for the master API
+###   NOTE !!
+###      - the difference with the standard openshift_hosted_manage_router is
+###        that this solution creates the router/ ipf pair
+###
+
+### In this section you assign router(s) with ipfailover, creating VIP(s) to front the router
+### You can setup one or more ipfailover/router pod combinations. Multiple routers cannot run on the same node.
+
+### list_item?=    | an arbitrary label used to construct the final ipfs= data structure. One per line
+### label          | a simple identifier for each ipfs ruleset. It is also the =V value in the selector K=V pair
+###                | do not change a label after it has been used (unless you manually delete the associated configuration)
+### K=V Selector   | the node selector identifying the minions the ipfailover/router pod can run on.
+### replicas       | the number of ipfailover/router pod(s) to run for this ruleset. (ideally 1 less than node set)
+### VIP(s)         | Virtual IPs to from this ruleset
+### http port      | the http port to expose and listen on for this ruleset (this could be 8080 instead of the usual 80)
+### https port     | the https port to expose and listen on for this ruleset (this could be 8443 instead of the usual 443)
+### vrrp_id_offset | a unique identify on the local subnet to prevent collisions between rulesets (value: 1 - 255) NOTE: If using multiple VIPs per routerset, ensure you don't use consecutive numbers. You need to allow the vrrp_id_offset + num of VIPs between each offset.
+### NIC            | the network interface card to listen on. (usually eth0)
+
+### Replace the above values with your own setting, DO NOT USE verbatim.
+
+### This setting removes router/ipf pairs prior to creating them, during the installation or upgrade process.
+### During this process (for instance during an upgrade) there might be a momentary loss of service.
+### We are investigating mitigating this in future releases.
+delete_ipfs_config_before_create=true
+
+
+### list_item1=[ "label", "K=V selector", replicas, "VIP(s)", http port, https port, vrrp_id_offset, "NIC" ]
+
+################################################################################################################
+routerset1=[ "dp1", "network=dp1", 2, "47.3.0.30", 80, 443, 1, "eth0" ]
+routerset2=[ "dp2", "network=dp2", 2, "47.3.0.31", 80, 443, 2, "eth0" ]
+routerset3=[ "dp3", "network=dp3", 2, "47.3.0.32", 80, 443, 3, "eth0" ]
+routerset4=[ "dp4", "network=dp4", 2, "47.3.0.33", 80, 443, 4, "eth0" ]
+routerset5=[ "dp5", "network=dp5", 2, "47.3.0.34", 80, 443, 5, "eth0" ]
+routerset6=[ "dp6", "network=dp6", 2, "47.3.0.35", 80, 443, 6, "eth0" ]
+routerset7=[ "dp7", "network=dp7", 2, "47.3.0.36", 80, 443, 7, "eth0" ]
+routerset8=[ "dp8", "network=dp8", 2, "47.3.0.37", 80, 443, 8, "eth0" ]
+routerset9=[ "dp9", "network=dp9", 2, "47.3.0.38", 80, 443, 9, "eth0" ]
+routerset10=[ "dp10", "network=dp10", 2, "47.3.0.39", 80, 443, 10, "eth0" ]
+routerset11=[ "dp11", "network=dp11", 2, "47.3.0.40", 80, 443, 11, "eth0" ]
+routerset12=[ "dp12", "network=dp12", 2, "47.3.0.41", 80, 443, 12, "eth0" ]
+routerset13=[ "dp13", "network=dp13", 2, "47.3.0.42", 80, 443, 13, "eth0" ]
+routerset14=[ "dp14", "network=dp14", 2, "47.3.0.43", 80, 443, 14, "eth0" ]
+ipfs=[routerset1,routerset2,routerset3,routerset4,routerset5,routerset6,routerset7,routerset8,routerset9,routerset10,routerset11,routerset12,routerset13,routerset14]
+
+#Openshift Registry Options
+openshift_hosted_manage_registry=false
+
+#Openshift Metrics deployment (https://hawkular-metrics.<DOMAIN>/hawkular/metrics)
+openshift_hosted_metrics_deploy=false
+# Note that <DOMAIN> must have the same value set for 'openshift_master_default_subdomain'
+#openshift_hosted_metrics_public_url=https://hawkular-metrics.dldc.tx.charter.com/hawkular/metrics
+#openshift_hosted_metrics_deployer_prefix=24.165.224.223:5000/openshift/origin-
+#openshift_hosted_metrics_deployer_version=v3.7.0
+
+#Openshift Logging deployment (https://kibana.<DOMAIN>)
+#openshift_hosted_logging_deploy=false
+#openshift_hosted_logging_deployer_prefix=24.165.224223:5000/openshift/origin-
+#openshift_hosted_logging_deployer_version=v3.7.0
+
+#Openshift-ansible docker options get setup here:
+#Modify according to your needs
+#Defaults:
+#    log-driver:journald
+#    dm.basesize: 10G
+#openshift_docker_options="--selinux-enabled --log-driver=journald --signature-verification=false"
+openshift_docker_options="--log-driver=json-file --log-opt=max-size=50M --log-opt=max-file=2 --signature-verification=false"
+logrotate_scripts=[{"name": "syslog", "path": "/var/log/cron\n/var/log/maillog\n/var/log/messages\n/var/log/secure\n/var/log/spooler\n", "options": ["daily", "rotate 10", "size 50M", "compress", "sharedscripts", "missingok"], "scripts": {"postrotate": "/bin/kill -HUP `cat /var/run/syslogd.pid 2> /dev/null` 2> /dev/null || true"}}]
+
+selinux_fix_textreloc=false
+
+#Unix logrotate setting.
+#Adjust according to your needs.
+#   daily     - This rotates logs each day unless other options such as size are exceeded.  Recommended to use this option
+#   rotate    - The amount of log files to rotate before removal.  The recommended setting is 10.
+#   size      - The amount the log files can grow to until they are rotated.  If you are finding that the logs are rotating too quickly due to excessive logging it may be useful to increase the file size , you must ensure your file system has the space before changing it.  The recommended setting for this is 50M.
+#   Compress  - This option compresses the logs before rotating.  Recommended to use this option.
+#   Path      - Indicates which log folders to rotate
+logrotate_scripts=[{"name": "syslog", "path": "/var/log/cron\n/var/log/maillog\n/var/log/messages\n/var/log/secure\n", "options": ["daily", "rotate 10", "size 50M", "compress", "sharedscripts", "missingok"], "scripts": {"postrotate": "/bin/kill -HUP `cat /var/run/syslogd.pid 2> /dev/null` 2> /dev/null || true"}}]
+
+# Enable service catalog
+openshift_enable_service_catalog=False
+
+# Enable template service broker (requires service catalog to be enabled, above)
+template_service_broker_install=False
+
+### openshift_portal_net is the subnet used for "services"
+### osm_cluster_network_cidr is the subnet that node subnets are allocated from (cannot be changed after deployment)
+### osm_host_subnet_length == pods/host, 10==/22, 9==/23, 8==/24 (cannot be changed after deployment)
+### Defaults:
+###    openshift_portal_net=172.30.0.0/16
+###    osm_cluster_network_cidr=10.128.0.0/16
+###    osm_host_subnet_length=9
+openshift_portal_net=172.11.0.0/16
+osm_cluster_network_cidr=10.110.0.0/16
+osm_host_subnet_length=9
+
+##$##openshift_portal_net=172.11.0.0/16
+##$##osm_cluster_network_cidr=10.110.0.0/16
+##$##osm_host_subnet_length=9
+
+
+
+# Enable origin repos that point at Centos PAAS SIG, defaults to true, only used by deployment_type=origin
+# This should be false for the deployer
+openshift_enable_origin_repo=false
+
+# Origin copr repo; Setup Only if different from the yumrepo_url
+#openshift_additional_repos=[{'id': 'openshift-origin-copr', 'name': 'OpenShift Origin COPR', 'baseurl': '<YUMREPO_PAAS_URL>', 'enabled': 1, 'gpgcheck': 0}]
+
+
+
+#host group for masters
+[masters]
+ladcca-ci-kmr-1101 ansible_ssh_host=47.3.0.27 openshift_ip=47.3.0.27 openshift_public_ip=47.3.0.27 openshift_public_hostname=ladcca-ci-kmr-1101 openshift_hostname=ladcca-ci-kmr-1101 openshift_schedulable=false
+ladcca-ci-kmr-1102 ansible_ssh_host=47.3.0.28 openshift_ip=47.3.0.28 openshift_public_ip=47.3.0.28 openshift_public_hostname=ladcca-ci-kmr-1102 openshift_hostname=ladcca-ci-kmr-1102 openshift_schedulable=false
+ladcca-ci-kmr-1103 ansible_ssh_host=47.3.0.29 openshift_ip=47.3.0.29 openshift_public_ip=47.3.0.29 openshift_public_hostname=ladcca-ci-kmr-1103 openshift_hostname=ladcca-ci-kmr-1103 openshift_schedulable=false
+
+
+
+
+#host group for minions
+[minions]
+ladcca-ci-knd-1101 ansible_ssh_host=47.3.0.44 openshift_ip=47.3.0.44 openshift_public_ip=47.3.0.44 openshift_public_hostname=ladcca-ci-knd-1101 openshift_hostname=ladcca-ci-knd-1101 openshift_node_labels="{'network': 'dp1', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1102 ansible_ssh_host=47.3.0.45 openshift_ip=47.3.0.45 openshift_public_ip=47.3.0.45 openshift_public_hostname=ladcca-ci-knd-1102 openshift_hostname=ladcca-ci-knd-1102 openshift_node_labels="{'network': 'dp1', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1103 ansible_ssh_host=47.3.0.46 openshift_ip=47.3.0.46 openshift_public_ip=47.3.0.46 openshift_public_hostname=ladcca-ci-knd-1103 openshift_hostname=ladcca-ci-knd-1103 openshift_node_labels="{'network': 'dp1', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1104 ansible_ssh_host=47.3.0.47 openshift_ip=47.3.0.47 openshift_public_ip=47.3.0.47 openshift_public_hostname=ladcca-ci-knd-1104 openshift_hostname=ladcca-ci-knd-1104 openshift_node_labels="{'network': 'dp2', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1105 ansible_ssh_host=47.3.0.48 openshift_ip=47.3.0.48 openshift_public_ip=47.3.0.48 openshift_public_hostname=ladcca-ci-knd-1105 openshift_hostname=ladcca-ci-knd-1105 openshift_node_labels="{'network': 'dp2', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1106 ansible_ssh_host=47.3.0.49 openshift_ip=47.3.0.49 openshift_public_ip=47.3.0.49 openshift_public_hostname=ladcca-ci-knd-1106 openshift_hostname=ladcca-ci-knd-1106 openshift_node_labels="{'network': 'dp2', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1107 ansible_ssh_host=47.3.0.50 openshift_ip=47.3.0.50 openshift_public_ip=47.3.0.50 openshift_public_hostname=ladcca-ci-knd-1107 openshift_hostname=ladcca-ci-knd-1107 openshift_node_labels="{'network': 'dp3', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1108 ansible_ssh_host=47.3.0.51 openshift_ip=47.3.0.51 openshift_public_ip=47.3.0.51 openshift_public_hostname=ladcca-ci-knd-1108 openshift_hostname=ladcca-ci-knd-1108 openshift_node_labels="{'network': 'dp3', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1109 ansible_ssh_host=47.3.0.52 openshift_ip=47.3.0.52 openshift_public_ip=47.3.0.52 openshift_public_hostname=ladcca-ci-knd-1109 openshift_hostname=ladcca-ci-knd-1109 openshift_node_labels="{'network': 'dp3', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1110 ansible_ssh_host=47.3.0.53 openshift_ip=47.3.0.53 openshift_public_ip=47.3.0.53 openshift_public_hostname=ladcca-ci-knd-1110 openshift_hostname=ladcca-ci-knd-1110 openshift_node_labels="{'network': 'dp4', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1111 ansible_ssh_host=47.3.0.54 openshift_ip=47.3.0.54 openshift_public_ip=47.3.0.54 openshift_public_hostname=ladcca-ci-knd-1111 openshift_hostname=ladcca-ci-knd-1111 openshift_node_labels="{'network': 'dp4', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1112 ansible_ssh_host=47.3.0.55 openshift_ip=47.3.0.55 openshift_public_ip=47.3.0.55 openshift_public_hostname=ladcca-ci-knd-1112 openshift_hostname=ladcca-ci-knd-1112 openshift_node_labels="{'network': 'dp4', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1113 ansible_ssh_host=47.3.0.56 openshift_ip=47.3.0.56 openshift_public_ip=47.3.0.56 openshift_public_hostname=ladcca-ci-knd-1113 openshift_hostname=ladcca-ci-knd-1113 openshift_node_labels="{'network': 'dp5', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1114 ansible_ssh_host=47.3.0.57 openshift_ip=47.3.0.57 openshift_public_ip=47.3.0.57 openshift_public_hostname=ladcca-ci-knd-1114 openshift_hostname=ladcca-ci-knd-1114 openshift_node_labels="{'network': 'dp5', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1115 ansible_ssh_host=47.3.0.58 openshift_ip=47.3.0.58 openshift_public_ip=47.3.0.58 openshift_public_hostname=ladcca-ci-knd-1115 openshift_hostname=ladcca-ci-knd-1115 openshift_node_labels="{'network': 'dp5', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1116 ansible_ssh_host=47.3.0.59 openshift_ip=47.3.0.59 openshift_public_ip=47.3.0.59 openshift_public_hostname=ladcca-ci-knd-1116 openshift_hostname=ladcca-ci-knd-1116 openshift_node_labels="{'network': 'dp6', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1117 ansible_ssh_host=47.3.0.60 openshift_ip=47.3.0.60 openshift_public_ip=47.3.0.60 openshift_public_hostname=ladcca-ci-knd-1117 openshift_hostname=ladcca-ci-knd-1117 openshift_node_labels="{'network': 'dp6', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1118 ansible_ssh_host=47.3.0.61 openshift_ip=47.3.0.61 openshift_public_ip=47.3.0.61 openshift_public_hostname=ladcca-ci-knd-1118 openshift_hostname=ladcca-ci-knd-1118 openshift_node_labels="{'network': 'dp6', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1119 ansible_ssh_host=47.3.0.62 openshift_ip=47.3.0.62 openshift_public_ip=47.3.0.62 openshift_public_hostname=ladcca-ci-knd-1119 openshift_hostname=ladcca-ci-knd-1119 openshift_node_labels="{'network': 'dp7', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1120 ansible_ssh_host=47.3.0.63 openshift_ip=47.3.0.63 openshift_public_ip=47.3.0.63 openshift_public_hostname=ladcca-ci-knd-1120 openshift_hostname=ladcca-ci-knd-1120 openshift_node_labels="{'network': 'dp7', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1121 ansible_ssh_host=47.3.0.64 openshift_ip=47.3.0.64 openshift_public_ip=47.3.0.64 openshift_public_hostname=ladcca-ci-knd-1121 openshift_hostname=ladcca-ci-knd-1121 openshift_node_labels="{'network': 'dp7', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1122 ansible_ssh_host=47.3.0.65 openshift_ip=47.3.0.65 openshift_public_ip=47.3.0.65 openshift_public_hostname=ladcca-ci-knd-1122 openshift_hostname=ladcca-ci-knd-1122 openshift_node_labels="{'network': 'dp8', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1123 ansible_ssh_host=47.3.0.66 openshift_ip=47.3.0.66 openshift_public_ip=47.3.0.66 openshift_public_hostname=ladcca-ci-knd-1123 openshift_hostname=ladcca-ci-knd-1123 openshift_node_labels="{'network': 'dp8', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1124 ansible_ssh_host=47.3.0.67 openshift_ip=47.3.0.67 openshift_public_ip=47.3.0.67 openshift_public_hostname=ladcca-ci-knd-1124 openshift_hostname=ladcca-ci-knd-1124 openshift_node_labels="{'network': 'dp8', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1125 ansible_ssh_host=47.3.0.68 openshift_ip=47.3.0.68 openshift_public_ip=47.3.0.68 openshift_public_hostname=ladcca-ci-knd-1125 openshift_hostname=ladcca-ci-knd-1125 openshift_node_labels="{'network': 'dp9', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1126 ansible_ssh_host=47.3.0.69 openshift_ip=47.3.0.69 openshift_public_ip=47.3.0.69 openshift_public_hostname=ladcca-ci-knd-1126 openshift_hostname=ladcca-ci-knd-1126 openshift_node_labels="{'network': 'dp9', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1127 ansible_ssh_host=47.3.0.70 openshift_ip=47.3.0.70 openshift_public_ip=47.3.0.70 openshift_public_hostname=ladcca-ci-knd-1127 openshift_hostname=ladcca-ci-knd-1127 openshift_node_labels="{'network': 'dp9', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1128 ansible_ssh_host=47.3.0.71 openshift_ip=47.3.0.71 openshift_public_ip=47.3.0.71 openshift_public_hostname=ladcca-ci-knd-1128 openshift_hostname=ladcca-ci-knd-1128 openshift_node_labels="{'network': 'dp10', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1129 ansible_ssh_host=47.3.0.72 openshift_ip=47.3.0.72 openshift_public_ip=47.3.0.72 openshift_public_hostname=ladcca-ci-knd-1129 openshift_hostname=ladcca-ci-knd-1129 openshift_node_labels="{'network': 'dp10', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1130 ansible_ssh_host=47.3.0.73 openshift_ip=47.3.0.73 openshift_public_ip=47.3.0.73 openshift_public_hostname=ladcca-ci-knd-1130 openshift_hostname=ladcca-ci-knd-1130 openshift_node_labels="{'network': 'dp10', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1131 ansible_ssh_host=47.3.0.74 openshift_ip=47.3.0.74 openshift_public_ip=47.3.0.74 openshift_public_hostname=ladcca-ci-knd-1131 openshift_hostname=ladcca-ci-knd-1131 openshift_node_labels="{'network': 'dp11', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1132 ansible_ssh_host=47.3.0.75 openshift_ip=47.3.0.75 openshift_public_ip=47.3.0.75 openshift_public_hostname=ladcca-ci-knd-1132 openshift_hostname=ladcca-ci-knd-1132 openshift_node_labels="{'network': 'dp11', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1133 ansible_ssh_host=47.3.0.76 openshift_ip=47.3.0.76 openshift_public_ip=47.3.0.76 openshift_public_hostname=ladcca-ci-knd-1133 openshift_hostname=ladcca-ci-knd-1133 openshift_node_labels="{'network': 'dp11', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1134 ansible_ssh_host=47.3.0.77 openshift_ip=47.3.0.77 openshift_public_ip=47.3.0.77 openshift_public_hostname=ladcca-ci-knd-1134 openshift_hostname=ladcca-ci-knd-1134 openshift_node_labels="{'network': 'dp12', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1135 ansible_ssh_host=47.3.0.78 openshift_ip=47.3.0.78 openshift_public_ip=47.3.0.78 openshift_public_hostname=ladcca-ci-knd-1135 openshift_hostname=ladcca-ci-knd-1135 openshift_node_labels="{'network': 'dp12', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1136 ansible_ssh_host=47.3.0.79 openshift_ip=47.3.0.79 openshift_public_ip=47.3.0.79 openshift_public_hostname=ladcca-ci-knd-1136 openshift_hostname=ladcca-ci-knd-1136 openshift_node_labels="{'network': 'dp12', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1137 ansible_ssh_host=47.3.0.80 openshift_ip=47.3.0.80 openshift_public_ip=47.3.0.80 openshift_public_hostname=ladcca-ci-knd-1137 openshift_hostname=ladcca-ci-knd-1137 openshift_node_labels="{'network': 'dp13', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1138 ansible_ssh_host=47.3.0.81 openshift_ip=47.3.0.81 openshift_public_ip=47.3.0.81 openshift_public_hostname=ladcca-ci-knd-1138 openshift_hostname=ladcca-ci-knd-1138 openshift_node_labels="{'network': 'dp13', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1139 ansible_ssh_host=47.3.0.82 openshift_ip=47.3.0.82 openshift_public_ip=47.3.0.82 openshift_public_hostname=ladcca-ci-knd-1139 openshift_hostname=ladcca-ci-knd-1139 openshift_node_labels="{'network': 'dp13', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1140 ansible_ssh_host=47.3.0.83 openshift_ip=47.3.0.83 openshift_public_ip=47.3.0.83 openshift_public_hostname=ladcca-ci-knd-1140 openshift_hostname=ladcca-ci-knd-1140 openshift_node_labels="{'network': 'dp14', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1141 ansible_ssh_host=47.3.0.84 openshift_ip=47.3.0.84 openshift_public_ip=47.3.0.84 openshift_public_hostname=ladcca-ci-knd-1141 openshift_hostname=ladcca-ci-knd-1141 openshift_node_labels="{'network': 'dp14', 'vmrk8s': 'true'}" openshift_schedulable=true
+ladcca-ci-knd-1142 ansible_ssh_host=47.3.0.85 openshift_ip=47.3.0.85 openshift_public_ip=47.3.0.85 openshift_public_hostname=ladcca-ci-knd-1142 openshift_hostname=ladcca-ci-knd-1142 openshift_node_labels="{'network': 'dp14', 'vmrk8s': 'true'}" openshift_schedulable=true
+
+
+
+
+[minions:vars]
+#reboot_timeout=<TIMEOUT IN SECONDS>  ### SET THIS and remove this comment
+pv_device=sdb
+pv_part=1
+
+
+## The [gluster] group is used when configuring glusterfs storage
+## Ansible will expect this block to exist in the inventory EVEN if it is empty.
+## DO NOT comment or remove [gluster], but it can be an empty group
+[gluster]
+#ivpcoe-node4 ansible_ssh_host=<NODE4-IP> openshift_ip=<NODE4-IP> openshift_public_ip=<NODE4-IP> openshift_public_hostname=ivpcoe-node4 openshift_hostname=ivpcoe-node4 openshift_node_labels="{'app': 'gluster'}" openshift_schedulable=false  ### SET THIS and remove this comment
+#ivpcoe-node5 ansible_ssh_host=<NODE5-IP> openshift_ip=<NODE5-IP> openshift_public_ip=<NODE5-IP> openshift_public_hostname=ivpcoe-node5 openshift_hostname=ivpcoe-node5 openshift_node_labels="{'app': 'gluster'}" openshift_schedulable=false  ### SET THIS and remove this comment
+#ivpcoe-node6 ansible_ssh_host=<NODE6-IP> openshift_ip=<NODE6-IP> openshift_public_ip=<NODE6-IP> openshift_public_hostname=ivpcoe-node6 openshift_hostname=ivpcoe-node6 openshift_node_labels="{'app': 'gluster'}" openshift_schedulable=false  ### SET THIS and remove this comment
+
+## The [gluster:vars] group is used when configuring glusterfs storage
+## Ansible will expect this block to exist in the inventory EVEN if it is empty.
+## DO NOT comment or remove [gluster:vars], but it can be an empty group
+[gluster:vars]
+## gluster physical disk device and partition number
+#gluster_pv_device=sdc  ### describe an empty disk device  ### SET THIS and remove this comment
+#gluster_pv_part=1      ### and partion for gluster store  ### SET THIS and remove this comment
+## gluster brick [ <brick numeric id>, "<size>" ]
+#gluster_brick01=[ 1, "5G" ]
+#gluster_brick02=[ 2, "5G" ]
+#gluster_bricks=[gluster_brick01,gluster_brick02]
+## gluster volume [ <volume numeric id>, "<volume name>", <brick numeric id>, <replicas> ]
+#gluster_volume01=[ 1, "test01", 1, 3 ]
+#gluster_volume02=[ 2, "test02", 2, 3 ]
+#gluster_volume03=[ 3, "test03", 1, 3 ]
+#gluster_volume04=[ 4, "test04", 2, 3 ]
+#gluster_volumes=[gluster_volume01,gluster_volume02,gluster_volume03,gluster_volume04]
+#reboot_timeout=<TIMEOUT IN SECONDS>  ### SET THIS and remove this comment
+
+
+#host group for nodes
+[nodes:children]
+masters
+minions
+gluster
+
+[nodes:vars]
+pv_device=sdb
+pv_part=1
+
+## The [new_masters] group is used when performing a scaleup process.
+## Ansible will expect this block to exist in the inventory EVEN if it is empty.
+## DO NOT comment or remove [new_masters], but it can be an empty group
+[new_masters]
+
+
+## The [new_masters:vars] group is used when performing a scaleup process.
+## Ansible will expect this block to exist in the inventory EVEN if it is empty.
+## DO NOT comment or remove [new_masters:vars], but it can be an empty group
+[new_masters:vars]
+
+
+## The [new_minions] group is used when performing a scaleup process.
+## Ansible will expect this block to exist in the inventory EVEN if it is empty.
+## DO NOT comment or remove [new_minions], but it can be an empty group
+[new_minions]
+## The [new_minions:vars] group is used when performing a scaleup process.
+## Ansible will expect this block to exist in the inventory EVEN if it is empty.
+## DO NOT comment or remove [new_minions:vars], but it can be an empty group
+[new_minions:vars]
+
+
+## The [new_nodes:children] group is used when performing a scaleup process.
+## Ansible will expect this block to exist in the inventory ALWAYS.
+## DO NOT comment or remove [new_nodes:children], new_master or new_minions
+[new_nodes:children]
+new_masters
+new_minions
+
+
+## The [new_nodes:vars] group is used when performing a scaleup process.
+## Ansible will expect this block to exist in the inventory EVEN if it is empty.
+## DO NOT comment or remove [new_nodes:vars], but it can be an empty group
+[new_nodes:vars]
+#pv_device=<DISK>  ### describe an empty disk device  ### SET THIS and remove this comment
+#pv_part=<PART>    ### and partition for docker caching ### SET THIS and remove this comment
+pv_device=sdb
+pv_part=1
+
+
+#host group for nfs servers
+#[nfs]
+#<IPADDR> ansible_ssh_host=<IPADDR> openshift_ip=<IPADDR> openshift_public_ip=<IPADDR> openshift_public_hostname=<IPADDR> openshift_hostname=<IPADDR>  ### SET THIS and remove this comment
+
+#[nfs:vars]
+#number_of_pvs=<NUM>  ### SET THIS and remove this comment
+
+
+[etcd:children]
+masters
+new_masters
+
+[etcd:vars]
+
+
+[lb]
+ladcca-ci-klb-1101 ansible_ssh_host=47.3.0.25 openshift_ip=47.3.0.25 openshift_public_ip=47.3.0.25 openshift_public_hostname=ladcca-ci-klb-1101 openshift_hostname=ladcca-ci-klb-1101 ha_status=MASTER
+ladcca-ci-klb-1102 ansible_ssh_host=47.3.0.26 openshift_ip=47.3.0.26 openshift_public_ip=47.3.0.26 openshift_public_hostname=ladcca-ci-klb-1102 openshift_hostname=ladcca-ci-klb-1102 ha_status=SLAVE
+
+[lb:vars]
+
+
+[deployer]
+ladcca-ci-dpl-1101 ansible_ssh_host=47.3.0.22 openshift_ip=47.3.0.22 openshift_hostname=ladcca-ci-dpl-1101
+
+[deployer:vars]
+
+
+
+

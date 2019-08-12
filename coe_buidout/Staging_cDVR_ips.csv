@@ -1,0 +1,455 @@
+POD,Type,No.,Hostnameÿ,Interfaceÿ,VLANÿ,,IPv4ÿ,Cntr,,IPv6,Descriptionÿ,Orig Line,4Net1,4Net2,4Net3,4Net4,,6net,,IPv4,DNS A Records,IPv6,DNS AAAA Records
+,,,"IPv4 Network: 75.179.249.208/28
+MASK: 255.255.255.240
+IPv6 Network: 2001:1998:064f:010d::/64",,920,,208,,,,"SRDC 1 Dash TS Packagers
+domain: cdvr.stage.charter.com",2,75,179,249,208,75.179.249.208,010d,,,,,
+,,,VRRP IP,,920,75.179.249.,209,1,2001:1998:064f:010d::,1,Gateway,3,75,179,249,208,75.179.249.209,010d,,,,,
+,,,Router 1,,920,75.179.249.,210,2,2001:1998:064f:010d::,2,,4,75,179,249,208,75.179.249.210,010d,,,,,
+,,,Router 2,,920,75.179.249.,211,3,2001:1998:064f:010d::,3,,5,75,179,249,208,75.179.249.211,010d,,,,,
+1,im-pkg,1,cdptpabb-im-pkg-0001,eth0,920,75.179.249.,212,4,2001:1998:064f:010d::,4,DASH-TS Packager 1,6,75,179,249,208,75.179.249.212,010d,,75.179.249.212,cdptpabb-im-pkg-0001.cdvr.stage.charter.com,2001:1998:064f:010d::4,cdptpabb-im-pkg-0001.cdvr.stage.charter.com
+1,im-pkg,2,cdptpabb-im-pkg-0002,eth0,920,75.179.249.,213,5,2001:1998:064f:010d::,5,DASH-TS Packager 2,7,75,179,249,208,75.179.249.213,010d,,75.179.249.213,cdptpabb-im-pkg-0002.cdvr.stage.charter.com,2001:1998:064f:010d::5,cdptpabb-im-pkg-0002.cdvr.stage.charter.com
+1,im-pkg,3,cdptpabb-im-pkg-0003,eth0,920,75.179.249.,214,6,2001:1998:064f:010d::,6,DASH-TS Packager 3,8,75,179,249,208,75.179.249.214,010d,,75.179.249.214,cdptpabb-im-pkg-0003.cdvr.stage.charter.com,2001:1998:064f:010d::6,cdptpabb-im-pkg-0003.cdvr.stage.charter.com
+1,im-pkg,4,cdptpabb-im-pkg-0004,eth0,920,75.179.249.,215,7,2001:1998:064f:010d::,7,DASH-TS Packager 4,9,75,179,249,208,75.179.249.215,010d,,75.179.249.215,cdptpabb-im-pkg-0004.cdvr.stage.charter.com,2001:1998:064f:010d::7,cdptpabb-im-pkg-0004.cdvr.stage.charter.com
+1,im-pkg,5,cdptpabb-im-pkg-0005,eth0,920,75.179.249.,216,8,2001:1998:064f:010d::,8,DASH-TS Packager 5,10,75,179,249,208,75.179.249.216,010d,,75.179.249.216,cdptpabb-im-pkg-0005.cdvr.stage.charter.com,2001:1998:064f:010d::8,cdptpabb-im-pkg-0005.cdvr.stage.charter.com
+1,im-pkg,6,cdptpabb-im-pkg-0006,eth0,920,75.179.249.,217,9,2001:1998:064f:010d::,9,Test Packager for Ron Munoz,11,75,179,249,208,75.179.249.217,010d,,,,,
+1,im-lic,1,cdptpabb-im-lic-0001,eth0,920,75.179.249.,218,10,2001:1998:064f:010d::,A,Imagine License Server #1,12,75,179,249,208,75.179.249.218,010d,,75.179.249.218,cdptpabb-im-lic-0001.cdvr.stage.charter.com,2001:1998:064f:010d::A,cdptpabb-im-lic-0001.cdvr.stage.charter.com
+1,im-lic,1,cdptpabb-im-lic-0002,eth0,920,75.179.249.,219,11,2001:1998:064f:010d::,B,Imagine License Server #2,13,75,179,249,208,75.179.249.219,010d,,75.179.249.219,cdptpabb-im-lic-0002.cdvr.stage.charter.com,2001:1998:064f:010d::B,cdptpabb-im-lic-0002.cdvr.stage.charter.com
+1,tk-sen,1,cdptpabb-tk-sen-1001,eth0,920,75.179.249.,220,12,2001:1998:064f:010d::,C,Tektronix Sentry,14,75,179,249,208,75.179.249.220,010d,,,,,
+1,iq-iqp,1,cdptpabb-iq-iqp-1001,eth0,920,75.179.249.,221,13,2001:1998:064f:010d::,D,Telestream Inspector Live,15,75,179,249,208,75.179.249.221,010d,,,,,
+1,ch-utl,1,cdptpabb-ch-utl-0001,eth0,920,75.179.249.,222,14,2001:1998:064f:010d::,E,Utillity Server 1,16,75,179,249,208,75.179.249.222,010d,,75.179.249.222,cdptpabb-ch-utl-0001.cdvr.stage.charter.com,2001:1998:064f:010d::E,cdptpabb-ch-utl-0001.cdvr.stage.charter.com
+,,,Broadcast,,920,75.179.249.,223,,,ffff:ffff:ffff:ffff,,17,75,179,249,208,75.179.249.223,010d,,,,,
+,,,,,,,,,,,,18,,,,,...,,,,,,
+,,,"IPv4 Network: 75.179.249.160/27
+MASK: 255.255.255.224
+IPv6 Network: 2001:1998:064f:010c::/64",,910,,160,,,,"SRDC 1 Couchbase/RR
+domain: cdvr.stage.charter.com",19,75,179,249,160,75.179.249.160,010c,,,,,
+,,,VRRP VIP,,910,75.179.249.,161,1,2001:1998:064f:010c::,1,,20,75,179,249,160,75.179.249.161,010c,,,,,
+,,,Router 1,,910,75.179.249.,162,2,2001:1998:064f:010c::,2,,21,75,179,249,160,75.179.249.162,010c,,,,,
+,,,Router 2,,910,75.179.249.,163,3,2001:1998:064f:010c::,3,,22,75,179,249,160,75.179.249.163,010c,,,,,
+1,n/a,n/a,rr-vip,n/a,910,75.179.249.,164,4,2001:1998:064f:010c::,4,RR VIP,23,75,179,249,160,75.179.249.164,010c,,75.179.249.164,rr-vip.cdvr.stage.charter.com,2001:1998:064f:010c::4,rr-vip.cdvr.stage.charter.com
+1,ch-llb,1,cdptpabb-ch-llb-0001,eth0,910,75.179.249.,165,5,2001:1998:064f:010c::,5,IPVS LB 1,24,75,179,249,160,75.179.249.165,010c,,75.179.249.165,cdptpabb-ch-llb-0001.cdvr.stage.charter.com,2001:1998:064f:010c::5,cdptpabb-ch-llb-0001.cdvr.stage.charter.com
+1,ch-llb,2,cdptpabb-ch-llb-0002,eth0,910,75.179.249.,166,6,2001:1998:064f:010c::,6,IPVS LB 2,25,75,179,249,160,75.179.249.166,010c,,75.179.249.166,cdptpabb-ch-llb-0002.cdvr.stage.charter.com,2001:1998:064f:010c::6,cdptpabb-ch-llb-0002.cdvr.stage.charter.com
+1,ci-vrr,1,cdptpabb-ci-vrr-0001,eth0,910,75.179.249.,167,7,2001:1998:064f:010c::,7,Record Router 1,26,75,179,249,160,75.179.249.167,010c,,75.179.249.167,cdptpabb-ci-vrr-0001.cdvr.stage.charter.com,2001:1998:064f:010c::7,cdptpabb-ci-vrr-0001.cdvr.stage.charter.com
+1,ci-vrr,2,cdptpabb-ci-vrr-0002,eth0,910,75.179.249.,168,8,2001:1998:064f:010c::,8,Record Router 2,27,75,179,249,160,75.179.249.168,010c,,75.179.249.168,cdptpabb-ci-vrr-0002.cdvr.stage.charter.com,2001:1998:064f:010c::8,cdptpabb-ci-vrr-0002.cdvr.stage.charter.com
+1,ci-vrr,3,cdptpabb-ci-vrr-0003,eth0,910,75.179.249.,169,9,2001:1998:064f:010c::,9,Record Router 3,28,75,179,249,160,75.179.249.169,010c,,75.179.249.169,cdptpabb-ci-vrr-0003.cdvr.stage.charter.com,2001:1998:064f:010c::9,cdptpabb-ci-vrr-0003.cdvr.stage.charter.com
+1,ci-cbb,1,cdptpabb-ci-cbb-0001,eth0,910,75.179.249.,170,10,2001:1998:064f:010c::,A,Couchbase 1,29,75,179,249,160,75.179.249.170,010c,,75.179.249.170,cdptpabb-ci-cbb-0001.cdvr.stage.charter.com,2001:1998:064f:010c::A,cdptpabb-ci-cbb-0001.cdvr.stage.charter.com
+1,ci-cbb,2,cdptpabb-ci-cbb-0002,eth0,910,75.179.249.,171,11,2001:1998:064f:010c::,B,Couchbase 2,30,75,179,249,160,75.179.249.171,010c,,75.179.249.171,cdptpabb-ci-cbb-0002.cdvr.stage.charter.com,2001:1998:064f:010c::B,cdptpabb-ci-cbb-0002.cdvr.stage.charter.com
+1,ci-cbb,3,cdptpabb-ci-cbb-0003,eth0,910,75.179.249.,172,12,2001:1998:064f:010c::,C,Couchbase 3,31,75,179,249,160,75.179.249.172,010c,,75.179.249.172,cdptpabb-ci-cbb-0003.cdvr.stage.charter.com,2001:1998:064f:010c::C,cdptpabb-ci-cbb-0003.cdvr.stage.charter.com
+1,ci-cbb,4,cdptpabb-ci-cbb-0004,eth0,910,75.179.249.,173,13,2001:1998:064f:010c::,D,Couchbase 4,32,75,179,249,160,75.179.249.173,010c,,75.179.249.173,cdptpabb-ci-cbb-0004.cdvr.stage.charter.com,2001:1998:064f:010c::D,cdptpabb-ci-cbb-0004.cdvr.stage.charter.com
+1,ci-cbb,5,cdptpabb-ci-cbb-0005,eth0,910,75.179.249.,174,14,2001:1998:064f:010c::,E,Couchbase 5,33,75,179,249,160,75.179.249.174,010c,,75.179.249.174,cdptpabb-ci-cbb-0005.cdvr.stage.charter.com,2001:1998:064f:010c::E,cdptpabb-ci-cbb-0005.cdvr.stage.charter.com
+1,ci-cbb,6,cdptpabb-ci-cbb-0006,eth0,910,75.179.249.,175,15,2001:1998:064f:010c::,F,Couchbase 6,34,75,179,249,160,75.179.249.175,010c,,75.179.249.175,cdptpabb-ci-cbb-0006.cdvr.stage.charter.com,2001:1998:064f:010c::F,cdptpabb-ci-cbb-0006.cdvr.stage.charter.com
+1,ci-cbb,7,cdptpabb-ci-cbb-0007,eth0,910,75.179.249.,176,16,2001:1998:064f:010c::,10,Couchbase 7,35,75,179,249,160,75.179.249.176,010c,,75.179.249.176,cdptpabb-ci-cbb-0007.cdvr.stage.charter.com,2001:1998:064f:010c::10,cdptpabb-ci-cbb-0007.cdvr.stage.charter.com
+1,ci-cbb,8,cdptpabb-ci-cbb-0008,eth0,910,75.179.249.,177,17,2001:1998:064f:010c::,11,Couchbase 8,36,75,179,249,160,75.179.249.177,010c,,75.179.249.177,cdptpabb-ci-cbb-0008.cdvr.stage.charter.com,2001:1998:064f:010c::11,cdptpabb-ci-cbb-0008.cdvr.stage.charter.com
+1,ci-cbb,9,cdptpabb-ci-cbb-0009,eth0,910,75.179.249.,178,18,2001:1998:064f:010c::,12,Couchbase 9,37,75,179,249,160,75.179.249.178,010c,,75.179.249.178,cdptpabb-ci-cbb-0009.cdvr.stage.charter.com,2001:1998:064f:010c::12,cdptpabb-ci-cbb-0009.cdvr.stage.charter.com
+1,ci-cbb,10,cdptpabb-ci-cbb-0010,eth0,910,75.179.249.,179,19,2001:1998:064f:010c::,13,Couchbase 10,38,75,179,249,160,75.179.249.179,010c,,75.179.249.179,cdptpabb-ci-cbb-0010.cdvr.stage.charter.com,2001:1998:064f:010c::13,cdptpabb-ci-cbb-0010.cdvr.stage.charter.com
+1,ci-cbb,11,cdptpabb-ci-cbb-0011,eth0,910,75.179.249.,180,20,2001:1998:064f:010c::,14,Couchbase 11,39,75,179,249,160,75.179.249.180,010c,,75.179.249.180,cdptpabb-ci-cbb-0011.cdvr.stage.charter.com,2001:1998:064f:010c::14,cdptpabb-ci-cbb-0011.cdvr.stage.charter.com
+1,ci-cbb,12,cdptpabb-ci-cbb-0012,eth0,910,75.179.249.,181,21,2001:1998:064f:010c::,15,Couchbase 12,40,75,179,249,160,75.179.249.181,010c,,75.179.249.181,cdptpabb-ci-cbb-0012.cdvr.stage.charter.com,2001:1998:064f:010c::15,cdptpabb-ci-cbb-0012.cdvr.stage.charter.com
+,,,Open,,910,75.179.249.,182,22,2001:1998:064f:010c::,16,,41,75,179,249,160,75.179.249.182,010c,,,,,
+,,,Open,,910,75.179.249.,183,23,2001:1998:064f:010c::,17,,42,75,179,249,160,75.179.249.183,010c,,,,,
+,,,Open,,910,75.179.249.,184,24,2001:1998:064f:010c::,18,,43,75,179,249,160,75.179.249.184,010c,,,,,
+,,,Open,,910,75.179.249.,185,25,2001:1998:064f:010c::,19,,44,75,179,249,160,75.179.249.185,010c,,,,,
+,,,Open,,910,75.179.249.,186,26,2001:1998:064f:010c::,1A,,45,75,179,249,160,75.179.249.186,010c,,,,,
+,,,Open,,910,75.179.249.,187,27,2001:1998:064f:010c::,1B,,46,75,179,249,160,75.179.249.187,010c,,,,,
+,,,Open,,910,75.179.249.,188,28,2001:1998:064f:010c::,1C,,47,75,179,249,160,75.179.249.188,010c,,,,,
+,,,Open,,910,75.179.249.,189,29,2001:1998:064f:010c::,1D,,48,75,179,249,160,75.179.249.189,010c,,,,,
+,,,Open,,910,75.179.249.,190,30,2001:1998:064f:010c::,1E,,49,75,179,249,160,75.179.249.190,010c,,,,,
+,,,Broadcast,,910,75.179.249.,191,,,ffff:ffff:ffff:ffff,,50,75,179,249,160,75.179.249.191,010c,,,,,
+,,,,,,,,,,,,51,,,,,,,,,,,
+,,,"IPv4 Network: 75.179.249.0/28
+MASK: 255.255.255.240
+IPv6 Network: 2001:1998:064f:0101::/64",,110,,0,,,,"RDC 1, POD 2, Public Internet
+domain: cdvr.stage.charter.com",52,75,179,249,0,75.179.249.0,0101,,,,,
+,,,VRRP VIP,,110,75.179.249.,1,1,2001:1998:064f:0101::,1,,53,75,179,249,0,75.179.249.1,0101,,,,,
+,,,,,110,75.179.249.,2,2,2001:1998:064f:0101::,2,,54,75,179,249,0,75.179.249.2,0101,,,,,
+,,,Router 2,,110,75.179.249.,3,3,2001:1998:064f:0101::,3,,55,75,179,249,0,75.179.249.3,0101,,,,,
+2,ch-gec,1,cdptpabb-ch-gec-2001-eth1,eth1,110,75.179.249.,4,4,2001:1998:064f:0101::,4,POD 2 eCDN Public Facing 1,56,75,179,249,0,75.179.249.4,0101,,,,,
+2,ch-gec,2,cdptpabb-ch-gec-2002-eth1,eth1,110,75.179.249.,5,5,2001:1998:064f:0101::,5,POD 2 eCDN Public Facing 2,57,75,179,249,0,75.179.249.5,0101,,,,,
+2,ch-gec,3,cdptpabb-ch-gec-2003-eth1,eth1,110,75.179.249.,6,6,2001:1998:064f:0101::,6,POD 2 eCDN Public Facing 3,58,75,179,249,0,75.179.249.6,0101,,,,,
+2,ch-gec,4,cdptpabb-ch-gec-2004-eth1,eth1,110,75.179.249.,7,7,2001:1998:064f:0101::,7,POD 2 eCDN Public Facing 4,59,75,179,249,0,75.179.249.7,0101,,,,,
+,,,Open,,110,75.179.249.,8,8,2001:1998:064f:0101::,8,,60,75,179,249,0,75.179.249.8,0101,,,,,
+,,,Open,,110,75.179.249.,9,9,2001:1998:064f:0101::,9,,61,75,179,249,0,75.179.249.9,0101,,,,,
+,,,Open,,110,75.179.249.,10,10,2001:1998:064f:0101::,A,,62,75,179,249,0,75.179.249.10,0101,,,,,
+,,,Open,,110,75.179.249.,11,11,2001:1998:064f:0101::,B,,63,75,179,249,0,75.179.249.11,0101,,,,,
+,,,Open,,110,75.179.249.,12,12,2001:1998:064f:0101::,C,,64,75,179,249,0,75.179.249.12,0101,,,,,
+,,,Open,,110,75.179.249.,13,13,2001:1998:064f:0101::,D,,65,75,179,249,0,75.179.249.13,0101,,,,,
+,,,Open,,110,75.179.249.,14,14,2001:1998:064f:0101::,E,,66,75,179,249,0,75.179.249.14,0101,,,,,
+,,,Broadcast,,110,75.179.249.,15,,,ffff:ffff:ffff:ffff,,67,75,179,249,0,75.179.249.15,0101,,,,,
+,,,,,,,,,,,,68,,,,,,,,,,,
+,,,"IPv4 Network: 75.179.249.16/28
+MASK: 255.255.255.240
+IPv6 Network: 2001:1998:064f:0102::/64",,310,,16,,,,"RDC 1, POD 3, Public Internet
+domain: cdvr.stage.charter.com",69,75,179,249,16,75.179.249.16,0102,,,,,
+,,,VRRP VIP,,310,75.179.249.,17,1,2001:1998:064f:0102::,1,,70,75,179,249,16,75.179.249.17,0102,,,,,
+,,,Router 1,,310,75.179.249.,18,2,2001:1998:064f:0102::,2,,71,75,179,249,16,75.179.249.18,0102,,,,,
+,,,Router 2,,310,75.179.249.,19,3,2001:1998:064f:0102::,3,,72,75,179,249,16,75.179.249.19,0102,,,,,
+3,ch-gec,1001,cdptpabb-ch-gec-3001-eth1,eth1,310,75.179.249.,20,4,2001:1998:064f:0102::,4,POD 3 eCDN Public Facing 1001,73,75,179,249,16,75.179.249.20,0102,,,,,
+3,ch-gec,1002,cdptpabb-ch-gec-3002-eth1,eth1,310,75.179.249.,21,5,2001:1998:064f:0102::,5,POD 3 eCDN Public Facing 1002,74,75,179,249,16,75.179.249.21,0102,,,,,
+3,ch-gec,1003,cdptpabb-ch-gec-3003-eth1,eth1,310,75.179.249.,22,6,2001:1998:064f:0102::,6,POD 3 eCDN Public Facing 1003,75,75,179,249,16,75.179.249.22,0102,,,,,
+3,ch-gec,1004,cdptpabb-ch-gec-3004-eth1,eth1,310,75.179.249.,23,7,2001:1998:064f:0102::,7,POD 3 eCDN Public Facing 1004,76,75,179,249,16,75.179.249.23,0102,,,,,
+,,,Open,,310,75.179.249.,24,8,2001:1998:064f:0102::,8,,77,75,179,249,16,75.179.249.24,0102,,,,,
+,,,Open,,310,75.179.249.,25,9,2001:1998:064f:0102::,9,,78,75,179,249,16,75.179.249.25,0102,,,,,
+,,,Open,,310,75.179.249.,26,10,2001:1998:064f:0102::,A,,79,75,179,249,16,75.179.249.26,0102,,,,,
+,,,Open,,310,75.179.249.,27,11,2001:1998:064f:0102::,B,,80,75,179,249,16,75.179.249.27,0102,,,,,
+,,,Open,,310,75.179.249.,28,12,2001:1998:064f:0102::,C,,81,75,179,249,16,75.179.249.28,0102,,,,,
+,,,Open,,310,75.179.249.,29,13,2001:1998:064f:0102::,D,,82,75,179,249,16,75.179.249.29,0102,,,,,
+,,,Open,,310,75.179.249.,30,14,2001:1998:064f:0102::,E,,83,75,179,249,16,75.179.249.30,0102,,,,,
+,,,Broadcast,,310,75.179.249.,31,,,ffff:ffff:ffff:ffff,,84,75,179,249,16,75.179.249.31,0102,,,,,
+,,,,,,,,,,,,85,,,,,,,,,,,
+,,,"IPv4 Network: 75.179.249.32/28
+MASK: 255.255.255.240
+IPv6 Network: 2001:1998:064f:0103::/64",,120,,32,,,,"RDC 1, POD 2, JITP
+domain: cdvr.stage.charter.com",86,75,179,249,32,75.179.249.32,0103,,,,,
+,,,VRRP VIP,,120,75.179.249.,33,1,2001:1998:064f:0103::,1,,87,75,179,249,32,75.179.249.33,0103,,,,,
+,,,Router 1,,120,75.179.249.,34,2,2001:1998:064f:0103::,2,,88,75,179,249,32,75.179.249.34,0103,,,,,
+,,,Router 2,,120,75.179.249.,35,3,2001:1998:064f:0103::,3,,89,75,179,249,32,75.179.249.35,0103,,,,,
+2,ch-gec,1,cdptpabb-ch-gec-2001,eth0,120,75.179.249.,36,4,2001:1998:064f:0103::,4,POD 2 eCDN Internal 1,90,75,179,249,32,75.179.249.36,0103,,75.179.249.36,cdptpabb-ch-gec-2001.cdvr.stage.charter.com,2001:1998:064f:0103::4,cdptpabb-ch-gec-2001.cdvr.stage.charter.com
+2,ch-gec,2,cdptpabb-ch-gec-2002,eth0,120,75.179.249.,37,5,2001:1998:064f:0103::,5,POD 2 eCDN Internal 2,91,75,179,249,32,75.179.249.37,0103,,75.179.249.37,cdptpabb-ch-gec-2002.cdvr.stage.charter.com,2001:1998:064f:0103::5,cdptpabb-ch-gec-2002.cdvr.stage.charter.com
+2,ch-gec,3,cdptpabb-ch-gec-2003,eth0,120,75.179.249.,38,6,2001:1998:064f:0103::,6,POD 2 eCDN Internal 3,92,75,179,249,32,75.179.249.38,0103,,75.179.249.38,cdptpabb-ch-gec-2003.cdvr.stage.charter.com,2001:1998:064f:0103::6,cdptpabb-ch-gec-2003.cdvr.stage.charter.com
+2,ch-gec,4,cdptpabb-ch-gec-2004,eth0,120,75.179.249.,39,7,2001:1998:064f:0103::,7,POD 2 eCDN Internal 4,93,75,179,249,32,75.179.249.39,0103,,75.179.249.39,cdptpabb-ch-gec-2004.cdvr.stage.charter.com,2001:1998:064f:0103::7,cdptpabb-ch-gec-2004.cdvr.stage.charter.com
+2,im-jit,1,cdptpabb-im-jit-2001,eth0,120,75.179.249.,40,8,2001:1998:064f:0103::,8,POD 2 JITP 1,94,75,179,249,32,75.179.249.40,0103,,75.179.249.40,cdptpabb-im-jit-2001.cdvr.stage.charter.com,2001:1998:064f:0103::8,cdptpabb-im-jit-2001.cdvr.stage.charter.com
+2,im-jit,2,cdptpabb-im-jit-2002,eth0,120,75.179.249.,41,9,2001:1998:064f:0103::,9,POD 2 JITP 2,95,75,179,249,32,75.179.249.41,0103,,75.179.249.41,cdptpabb-im-jit-2002.cdvr.stage.charter.com,2001:1998:064f:0103::9,cdptpabb-im-jit-2002.cdvr.stage.charter.com
+2,n/a,n/a,ipvs2001,n/a,120,75.179.249.,42,10,2001:1998:064f:0103::,A,POD 2 IPVS VIP,96,75,179,249,32,75.179.249.42,0103,,75.179.249.42,ipvs2001.cdvr.stage.charter.com,2001:1998:064f:0103::A,ipvs2001.cdvr.stage.charter.com
+2,ch-llb,3,cdptpabb-ch-llb-2001,eth0,120,75.179.249.,43,11,2001:1998:064f:0103::,B,"POD 2, IPVS 3",97,75,179,249,32,75.179.249.43,0103,,75.179.249.43,cdptpabb-ch-llb-2001.cdvr.stage.charter.com,2001:1998:064f:0103::B,cdptpabb-ch-llb-2001.cdvr.stage.charter.com
+2,ch-llb,4,cdptpabb-ch-llb-2002,eth0,120,75.179.249.,44,12,2001:1998:064f:0103::,C,"POD 2, IPVS 4",98,75,179,249,32,75.179.249.44,0103,,75.179.249.44,cdptpabb-ch-llb-2002.cdvr.stage.charter.com,2001:1998:064f:0103::C,cdptpabb-ch-llb-2002.cdvr.stage.charter.com
+2,ib-acr,1,cdptpabb-ib-acr-2001,??,120,75.179.249.,45,13,2001:1998:064f:0103::,D,"POD 2, Read Accessor 1",99,75,179,249,32,75.179.249.45,0103,,75.179.249.45,cdptpabb-ib-acr-2001.cdvr.stage.charter.com,2001:1998:064f:0103::D,cdptpabb-ib-acr-2001.cdvr.stage.charter.com
+2,ib-acr,2,cdptpabb-ib-acr-2002,??,120,75.179.249.,46,14,2001:1998:064f:0103::,E,"POD 2, Read Accessor 2",100,75,179,249,32,75.179.249.46,0103,,75.179.249.46,cdptpabb-ib-acr-2002.cdvr.stage.charter.com,2001:1998:064f:0103::E,cdptpabb-ib-acr-2002.cdvr.stage.charter.com
+,,,Broadcast,,120,75.179.249.,47,,,ffff:ffff:ffff:ffff,,101,75,179,249,32,75.179.249.47,0103,,,,,
+,,,,,,,,,,,,102,,,,,,,,,,,
+,,,"IPv4 Network: 75.179.249.48/28
+MASK: 255.255.255.240
+IPv6 Network: 2001:1998:064f:0104::/64",,320,,48,,,,"RDC 1, POD 3, JITP
+domain: cdvr.stage.charter.com",103,75,179,249,48,75.179.249.48,0104,,,,,
+,,,VRRP VIP,,320,75.179.249.,49,1,2001:1998:064f:0104::,1,,104,75,179,249,48,75.179.249.49,0104,,,,,
+,,,Router 1,,320,75.179.249.,50,2,2001:1998:064f:0104::,2,,105,75,179,249,48,75.179.249.50,0104,,,,,
+,,,Router 2,,320,75.179.249.,51,3,2001:1998:064f:0104::,3,,106,75,179,249,48,75.179.249.51,0104,,,,,
+3,ch-gec,1001,cdptpabb-ch-gec-3001,eth0,320,75.179.249.,52,4,2001:1998:064f:0104::,4,POD 3 eCDN Internal 1001,107,75,179,249,48,75.179.249.52,0104,,75.179.249.52,cdptpabb-ch-gec-3001.cdvr.stage.charter.com,2001:1998:064f:0104::4,cdptpabb-ch-gec-3001.cdvr.stage.charter.com
+3,ch-gec,1002,cdptpabb-ch-gec-3002,eth0,320,75.179.249.,53,5,2001:1998:064f:0104::,5,POD 3 eCDN Internal 1002,108,75,179,249,48,75.179.249.53,0104,,75.179.249.53,cdptpabb-ch-gec-3002.cdvr.stage.charter.com,2001:1998:064f:0104::5,cdptpabb-ch-gec-3002.cdvr.stage.charter.com
+3,ch-gec,1003,cdptpabb-ch-gec-3003,eth0,320,75.179.249.,54,6,2001:1998:064f:0104::,6,POD 3 eCDN Internal 1003,109,75,179,249,48,75.179.249.54,0104,,75.179.249.54,cdptpabb-ch-gec-3003.cdvr.stage.charter.com,2001:1998:064f:0104::6,cdptpabb-ch-gec-3003.cdvr.stage.charter.com
+3,ch-gec,1004,cdptpabb-ch-gec-3004,eth0,320,75.179.249.,55,7,2001:1998:064f:0104::,7,POD 3 eCDN Internal 1004,110,75,179,249,48,75.179.249.55,0104,,75.179.249.55,cdptpabb-ch-gec-3004.cdvr.stage.charter.com,2001:1998:064f:0104::7,cdptpabb-ch-gec-3004.cdvr.stage.charter.com
+3,im-jit,1001,cdptpabb-im-jit-3001,eth0,320,75.179.249.,56,8,2001:1998:064f:0104::,8,POD 3 JITP 1001,111,75,179,249,48,75.179.249.56,0104,,75.179.249.56,cdptpabb-im-jit-3001.cdvr.stage.charter.com,2001:1998:064f:0104::8,cdptpabb-im-jit-3001.cdvr.stage.charter.com
+3,im-jit,1002,cdptpabb-im-jit-3002,eth0,320,75.179.249.,57,9,2001:1998:064f:0104::,9,POD 3 JITP 1002,112,75,179,249,48,75.179.249.57,0104,,75.179.249.57,cdptpabb-im-jit-3002.cdvr.stage.charter.com,2001:1998:064f:0104::9,cdptpabb-im-jit-3002.cdvr.stage.charter.com
+3,n/a,n/a,ipvs3001,n/a,320,75.179.249.,58,10,2001:1998:064f:0104::,A,POD 3 IPVS VIP,113,75,179,249,48,75.179.249.58,0104,,75.179.249.58,ipvs3001.cdvr.stage.charter.com,2001:1998:064f:0104::A,ipvs3001.cdvr.stage.charter.com
+3,ch-llb,1002,cdptpabb-ch-llb-3001,eth0,320,75.179.249.,59,11,2001:1998:064f:0104::,B,"POD 3, IPVS 1002",114,75,179,249,48,75.179.249.59,0104,,75.179.249.59,cdptpabb-ch-llb-3001.cdvr.stage.charter.com,2001:1998:064f:0104::B,cdptpabb-ch-llb-3001.cdvr.stage.charter.com
+3,ch-llb,1003,cdptpabb-ch-llb-3002,eth0,320,75.179.249.,60,12,2001:1998:064f:0104::,C,"POD 3, IPVS 1003",115,75,179,249,48,75.179.249.60,0104,,75.179.249.60,cdptpabb-ch-llb-3002.cdvr.stage.charter.com,2001:1998:064f:0104::C,cdptpabb-ch-llb-3002.cdvr.stage.charter.com
+3,ib-acr,1001,cdptpabb-ib-acr-3001,eth0,320,75.179.249.,61,13,2001:1998:064f:0104::,D,"POD 3, Read Accessor 1001",116,75,179,249,48,75.179.249.61,0104,,75.179.249.61,cdptpabb-ib-acr-3001.cdvr.stage.charter.com,2001:1998:064f:0104::D,cdptpabb-ib-acr-3001.cdvr.stage.charter.com
+3,ib-acr,1002,cdptpabb-ib-acr-3002,eth0,320,75.179.249.,62,14,2001:1998:064f:0104::,E,"POD 3, Read Accessor 1002",117,75,179,249,48,75.179.249.62,0104,,75.179.249.62,cdptpabb-ib-acr-3002.cdvr.stage.charter.com,2001:1998:064f:0104::E,cdptpabb-ib-acr-3002.cdvr.stage.charter.com
+,,,Broadcast,,320,75.179.249.,63,,,ffff:ffff:ffff:ffff,,118,75,179,249,48,75.179.249.63,0104,,,,,
+,,,,,,,,,,,,119,,,,,,,,,,,
+,,,"IPv4 Network: 75.179.212.0/26
+MASK: 255.255.255.192
+IPv6 Network: 2001:1998:064f:0105::/64",,130,,0,,,,"RDC 1, POD 2, VMR
+domain: cdvr.stage.charter.com",120,75,179,212,64,75.179.212.0,0105,,,,,
+,,,VRRP VIP,,130,75.179.212.,1,1,2001:1998:064f:0105::,1,,121,75,179,212,64,75.179.212.1,0105,,,,,
+,,,Router 1,,130,75.179.212.,2,2,2001:1998:064f:0105::,2,,122,75,179,212,64,75.179.212.2,0105,,,,,
+,,,Router 2,,130,75.179.212.,3,3,2001:1998:064f:0105::,3,,123,75,179,212,64,75.179.212.3,0105,,,,,
+2,ib-acw,1,cdptpabb-ib-acw-2001,eth0,130,75.179.212.,4,4,2001:1998:064f:0105::,4,"POD 2, Write Accessor 1",124,75,179,212,64,75.179.212.4,0105,,75.179.212.4,cdptpabb-ib-acw-2001.cdvr.stage.charter.com,2001:1998:064f:0105::4,cdptpabb-ib-acw-2001.cdvr.stage.charter.com
+2,ib-acw,2,cdptpabb-ib-acw-2002,eth0,130,75.179.212.,5,5,2001:1998:064f:0105::,5,"POD 2, Write Accessor 2",125,75,179,212,64,75.179.212.5,0105,,75.179.212.5,cdptpabb-ib-acw-2002.cdvr.stage.charter.com,2001:1998:064f:0105::5,cdptpabb-ib-acw-2002.cdvr.stage.charter.com
+2,,,cdptpabb-ch-llb-2003,eth0,130,75.179.212.,6,6,2001:1998:064f:0105::,6,POD 2 Dash Origin LB 1,126,75,179,212,64,75.179.212.6,0105,,75.179.212.6,cdptpabb-ch-llb-2003.cdvr.stage.charter.com,2001:1998:064f:0105::6,cdptpabb-ch-llb-2003.cdvr.stage.charter.com
+2,,,cdptpabb-ch-llb-2004,eth0,130,75.179.212.,7,7,2001:1998:064f:0105::,7,POD 2 Dash Origin LB 2,127,75,179,212,64,75.179.212.7,0105,,75.179.212.7,cdptpabb-ch-llb-2004.cdvr.stage.charter.com,2001:1998:064f:0105::7,cdptpabb-ch-llb-2004.cdvr.stage.charter.com
+2,n/a,n/a,osvip-2101,n/a,130,75.179.212.,8,8,2001:1998:064f:0105::,8,"POD 02, VMR 01 OS VIP",128,75,179,212,64,75.179.212.8,0105,,75.179.212.8,osvip-2101.cdvr.stage.charter.com,2001:1998:064f:0105::8,osvip-2101.cdvr.stage.charter.com
+2,n/a,n/a,osvip-2201,n/a,130,75.179.212.,9,9,2001:1998:064f:0105::,9,"POD 02, VMR 02 OS VIP",129,75,179,212,64,75.179.212.9,0105,,75.179.212.9,osvip-2201.cdvr.stage.charter.com,2001:1998:064f:0105::9,osvip-2201.cdvr.stage.charter.com
+2,n/a,n/a,vmrvip-2101,n/a,130,75.179.212.,10,10,2001:1998:064f:0105::,A,"POD 02, VMR 01, VIP worker nodes 1-3",130,75,179,212,64,75.179.212.10,0105,,75.179.212.10,vmrvip-2101.cdvr.stage.charter.com,2001:1998:064f:0105::A,vmrvip-2101.cdvr.stage.charter.com
+2,n/a,n/a,vmrvip-2102,n/a,130,75.179.212.,11,11,2001:1998:064f:0105::,B,"POD 02, VMR 01, VIP worker nodes 4-6",131,75,179,212,64,75.179.212.11,0105,,75.179.212.11,vmrvip-2102.cdvr.stage.charter.com,2001:1998:064f:0105::B,vmrvip-2102.cdvr.stage.charter.com
+2,n/a,n/a,vmrvip-2201,n/a,130,75.179.212.,12,12,2001:1998:064f:0105::,C,"POD 02, VMR 02, VIP worker nodes 1-3",132,75,179,212,64,75.179.212.12,0105,,75.179.212.12,vmrvip-2201.cdvr.stage.charter.com,2001:1998:064f:0105::C,vmrvip-2201.cdvr.stage.charter.com
+2,n/a,n/a,vmrvip-2202,n/a,130,75.179.212.,13,13,2001:1998:064f:0105::,D,"POD 02, VMR 02, VIP worker nodes 4-6",133,75,179,212,64,75.179.212.13,0105,,75.179.212.13,vmrvip-2202.cdvr.stage.charter.com,2001:1998:064f:0105::D,vmrvip-2202.cdvr.stage.charter.com
+2,ci-kmr,1,cdptpabb-ci-klb-2101,eth0,130,75.179.212.,14,14,2001:1998:064f:0105::,E,"POD 02, VMR 01, LB 01",134,75,179,212,64,75.179.212.14,0105,,75.179.212.14,cdptpabb-ci-klb-2101.cdvr.stage.charter.com,2001:1998:064f:0105::E,cdptpabb-ci-klb-2101.cdvr.stage.charter.com
+2,ci-kmr,2,cdptpabb-ci-klb-2102,eth0,130,75.179.212.,15,15,2001:1998:064f:0105::,F,"POD 02, VMR 01, LB 02",135,75,179,212,64,75.179.212.15,0105,,75.179.212.15,cdptpabb-ci-klb-2102.cdvr.stage.charter.com,2001:1998:064f:0105::F,cdptpabb-ci-klb-2102.cdvr.stage.charter.com
+2,ci-kmr,3,cdptpabb-ci-kmr-2101,eth0,130,75.179.212.,16,16,2001:1998:064f:0105::,10,"POD 02, VMR 01, Master 01",136,75,179,212,64,75.179.212.16,0105,,75.179.212.16,cdptpabb-ci-kmr-2101.cdvr.stage.charter.com,2001:1998:064f:0105::10,cdptpabb-ci-kmr-2101.cdvr.stage.charter.com
+2,ci-knd,1,cdptpabb-ci-kmr-2102,eth0,130,75.179.212.,17,17,2001:1998:064f:0105::,11,"POD 02, VMR 01, Master 02",137,75,179,212,64,75.179.212.17,0105,,75.179.212.17,cdptpabb-ci-kmr-2102.cdvr.stage.charter.com,2001:1998:064f:0105::11,cdptpabb-ci-kmr-2102.cdvr.stage.charter.com
+2,ci-knd,2,cdptpabb-ci-kmr-2103,eth0,130,75.179.212.,18,18,2001:1998:064f:0105::,12,"POD 02, VMR 01, Master 03",138,75,179,212,64,75.179.212.18,0105,,75.179.212.18,cdptpabb-ci-kmr-2103.cdvr.stage.charter.com,2001:1998:064f:0105::12,cdptpabb-ci-kmr-2103.cdvr.stage.charter.com
+2,ci-knd,3,cdptpabb-ci-knd-2101,eth0,130,75.179.212.,19,19,2001:1998:064f:0105::,13,"POD 02, VMR 01, Worker 01",139,75,179,212,64,75.179.212.19,0105,,75.179.212.19,cdptpabb-ci-knd-2101.cdvr.stage.charter.com,2001:1998:064f:0105::13,cdptpabb-ci-knd-2101.cdvr.stage.charter.com
+2,ci-knd,4,cdptpabb-ci-knd-2102,eth0,130,75.179.212.,20,20,2001:1998:064f:0105::,14,"POD 02, VMR 01, Worker 02",140,75,179,212,64,75.179.212.20,0105,,75.179.212.20,cdptpabb-ci-knd-2102.cdvr.stage.charter.com,2001:1998:064f:0105::14,cdptpabb-ci-knd-2102.cdvr.stage.charter.com
+2,ci-knd,5,cdptpabb-ci-knd-2103,eth0,130,75.179.212.,21,21,2001:1998:064f:0105::,15,"POD 02, VMR 01, Worker 03",141,75,179,212,64,75.179.212.21,0105,,75.179.212.21,cdptpabb-ci-knd-2103.cdvr.stage.charter.com,2001:1998:064f:0105::15,cdptpabb-ci-knd-2103.cdvr.stage.charter.com
+2,ci-knd,6,cdptpabb-ci-knd-2104,eth0,130,75.179.212.,22,22,2001:1998:064f:0105::,16,"POD 02, VMR 01, Worker 04",142,75,179,212,64,75.179.212.22,0105,,75.179.212.22,cdptpabb-ci-knd-2104.cdvr.stage.charter.com,2001:1998:064f:0105::16,cdptpabb-ci-knd-2104.cdvr.stage.charter.com
+2,ci-knd,,cdptpabb-ci-knd-2105,eth0,130,75.179.212.,23,23,2001:1998:064f:0105::,17,"POD 02, VMR 01, Worker 05",143,75,179,212,64,75.179.212.23,0105,,75.179.212.23,cdptpabb-ci-knd-2105.cdvr.stage.charter.com,2001:1998:064f:0105::17,cdptpabb-ci-knd-2105.cdvr.stage.charter.com
+2,ci-knd,,cdptpabb-ci-knd-2106,eth0,130,75.179.212.,24,24,2001:1998:064f:0105::,18,"POD 02, VMR 01, Worker 06",144,75,179,212,64,75.179.212.24,0105,,75.179.212.24,cdptpabb-ci-knd-2106.cdvr.stage.charter.com,2001:1998:064f:0105::18,cdptpabb-ci-knd-2106.cdvr.stage.charter.com
+2,ci-knd,,cdptpabb-ci-klb-2201,eth0,130,75.179.212.,25,25,2001:1998:064f:0105::,19,"POD 02, VMR 02, LB 01",145,75,179,212,64,75.179.212.25,0105,,75.179.212.25,cdptpabb-ci-klb-2201.cdvr.stage.charter.com,2001:1998:064f:0105::19,cdptpabb-ci-klb-2201.cdvr.stage.charter.com
+2,ci-knd,,cdptpabb-ci-klb-2202,eth0,130,75.179.212.,26,26,2001:1998:064f:0105::,1A,"POD 02, VMR 02, LB 02",146,75,179,212,64,75.179.212.26,0105,,75.179.212.26,cdptpabb-ci-klb-2202.cdvr.stage.charter.com,2001:1998:064f:0105::1A,cdptpabb-ci-klb-2202.cdvr.stage.charter.com
+2,ci-knd,,cdptpabb-ci-kmr-2201,eth0,130,75.179.212.,27,27,2001:1998:064f:0105::,1B,"POD 02, VMR 02, Master 01",147,75,179,212,64,75.179.212.27,0105,,75.179.212.27,cdptpabb-ci-kmr-2201.cdvr.stage.charter.com,2001:1998:064f:0105::1B,cdptpabb-ci-kmr-2201.cdvr.stage.charter.com
+2,ci-knd,,cdptpabb-ci-kmr-2202,eth0,130,75.179.212.,28,28,2001:1998:064f:0105::,1C,"POD 02, VMR 02, Master 02",148,75,179,212,64,75.179.212.28,0105,,75.179.212.28,cdptpabb-ci-kmr-2202.cdvr.stage.charter.com,2001:1998:064f:0105::1C,cdptpabb-ci-kmr-2202.cdvr.stage.charter.com
+2,,,cdptpabb-ci-kmr-2203,eth0,130,75.179.212.,29,29,2001:1998:064f:0105::,1D,"POD 02, VMR 02, Master 03",149,75,179,212,64,75.179.212.29,0105,,75.179.212.29,cdptpabb-ci-kmr-2203.cdvr.stage.charter.com,2001:1998:064f:0105::1D,cdptpabb-ci-kmr-2203.cdvr.stage.charter.com
+2,,,cdptpabb-ci-knd-2201,eth0,130,75.179.212.,30,30,2001:1998:064f:0105::,1E,"POD 02, VMR 02, Worker 01",150,75,179,212,64,75.179.212.30,0105,,75.179.212.30,cdptpabb-ci-knd-2201.cdvr.stage.charter.com,2001:1998:064f:0105::1E,cdptpabb-ci-knd-2201.cdvr.stage.charter.com
+2,,,cdptpabb-ci-knd-2202,eth0,130,75.179.212.,31,31,2001:1998:064f:0105::,1F,"POD 02, VMR 02, Worker 02",151,75,179,212,64,75.179.212.31,0105,,75.179.212.31,cdptpabb-ci-knd-2202.cdvr.stage.charter.com,2001:1998:064f:0105::1F,cdptpabb-ci-knd-2202.cdvr.stage.charter.com
+2,,,cdptpabb-ci-knd-2203,eth0,130,75.179.212.,32,32,2001:1998:064f:0105::,20,"POD 02, VMR 02, Worker 03",152,75,179,212,64,75.179.212.32,0105,,75.179.212.32,cdptpabb-ci-knd-2203.cdvr.stage.charter.com,2001:1998:064f:0105::20,cdptpabb-ci-knd-2203.cdvr.stage.charter.com
+2,,,cdptpabb-ci-knd-2205,eth0,130,75.179.212.,33,33,2001:1998:064f:0105::,21,"POD 02, VMR 02, Worker 04",153,75,179,212,64,75.179.212.33,0105,,75.179.212.33,cdptpabb-ci-knd-2205.cdvr.stage.charter.com,2001:1998:064f:0105::21,cdptpabb-ci-knd-2205.cdvr.stage.charter.com
+2,,,cdptpabb-ci-knd-2204,eth0,130,75.179.212.,34,34,2001:1998:064f:0105::,22,"POD 02, VMR 02, Worker 05",154,75,179,212,64,75.179.212.34,0105,,75.179.212.34,cdptpabb-ci-knd-2204.cdvr.stage.charter.com,2001:1998:064f:0105::22,cdptpabb-ci-knd-2204.cdvr.stage.charter.com
+2,,,cdptpabb-ci-knd-2206,eth0,130,75.179.212.,35,35,2001:1998:064f:0105::,23,"POD 02, VMR 02, Worker 06",155,75,179,212,64,75.179.212.35,0105,,75.179.212.35,cdptpabb-ci-knd-2206.cdvr.stage.charter.com,2001:1998:064f:0105::23,cdptpabb-ci-knd-2206.cdvr.stage.charter.com
+2,,,cdptpabb-ci-mql-2201,eth0,130,75.179.212.,36,36,2001:1998:064f:0105::,24,"POD 02, VMR 02, MemSQL 01",156,75,179,212,64,75.179.212.36,0105,,75.179.212.36,cdptpabb-ci-mql-2201.cdvr.stage.charter.com,2001:1998:064f:0105::24,cdptpabb-ci-mql-2201.cdvr.stage.charter.com
+2,,,cdptpabb-ci-mql-2202,eth0,130,75.179.212.,37,37,2001:1998:064f:0105::,25,"POD 02, VMR 02, MemSQL 02",156,75,179,212,64,75.179.212.37,0105,,75.179.212.37,cdptpabb-ci-mql-2202.cdvr.stage.charter.com,2001:1998:064f:0105::25,cdptpabb-ci-mql-2202.cdvr.stage.charter.com
+2,,,cdptpabb-ci-mql-2203,eth0,130,75.179.212.,38,38,2001:1998:064f:0105::,26,"POD 02, VMR 02, MemSQL 03",156,75,179,212,64,75.179.212.38,0105,,75.179.212.38,cdptpabb-ci-mql-2203.cdvr.stage.charter.com,2001:1998:064f:0105::26,cdptpabb-ci-mql-2203.cdvr.stage.charter.com
+2,,,cdptpabb-ci-klb-2103,eth0,130,75.179.212.,39,39,2001:1998:064f:0105::,27,"POD 02, Mon 01, LB",159,75,179,212,64,75.179.212.39,0105,,75.179.212.39,cdptpabb-ci-klb-2103.cdvr.stage.charter.com,2001:1998:064f:0105::27,cdptpabb-ci-klb-2103.cdvr.stage.charter.com
+2,,,cdptpabb-ci-klb-2104,eth0,130,75.179.212.,40,40,2001:1998:064f:0105::,28,"POD 02, Mon 01, LB",160,75,179,212,64,75.179.212.40,0105,,75.179.212.40,cdptpabb-ci-klb-2104.cdvr.stage.charter.com,2001:1998:064f:0105::28,cdptpabb-ci-klb-2104.cdvr.stage.charter.com
+2,,,cdptpabb-ci-kmr-2104,eth0,130,75.179.212.,41,41,2001:1998:064f:0105::,29,"POD 02, Mon 01, Master",161,75,179,212,64,75.179.212.41,0105,,75.179.212.41,cdptpabb-ci-kmr-2104.cdvr.stage.charter.com,2001:1998:064f:0105::29,cdptpabb-ci-kmr-2104.cdvr.stage.charter.com
+2,,,cdptpabb-ci-kmr-2105,eth0,130,75.179.212.,42,42,2001:1998:064f:0105::,2A,"POD 02, Mon 01, Master",142,75,179,212,64,75.179.212.42,0105,,75.179.212.42,cdptpabb-ci-kmr-2105.cdvr.stage.charter.com,2001:1998:064f:0105::2A,cdptpabb-ci-kmr-2105.cdvr.stage.charter.com
+2,,,cdptpabb-ci-kmr-2106,eth0,130,75.179.212.,43,43,2001:1998:064f:0105::,2B,"POD 02, Mon 01, Master",143,75,179,212,64,75.179.212.43,0105,,75.179.212.43,cdptpabb-ci-kmr-2106.cdvr.stage.charter.com,2001:1998:064f:0105::2B,cdptpabb-ci-kmr-2106.cdvr.stage.charter.com
+2,,,cdptpabb-ci-knd-2107,eth0,130,75.179.212.,44,44,2001:1998:064f:0105::,2C,"POD 02, Mon 01, Worker",144,75,179,212,64,75.179.212.44,0105,,75.179.212.44,cdptpabb-ci-knd-2107.cdvr.stage.charter.com,2001:1998:064f:0105::2C,cdptpabb-ci-knd-2107.cdvr.stage.charter.com
+2,,,cdptpabb-ci-knd-2108,eth0,130,75.179.212.,45,45,2001:1998:064f:0105::,2D,"POD 02, Mon 01, Worker",165,75,179,212,64,75.179.212.45,0105,,75.179.212.45,cdptpabb-ci-knd-2108.cdvr.stage.charter.com,2001:1998:064f:0105::2D,cdptpabb-ci-knd-2108.cdvr.stage.charter.com
+2,,,cdptpabb-ci-knd-2109,eth0,130,75.179.212.,46,46,2001:1998:064f:0105::,2E,"POD 02, Mon 01, Worker",166,75,179,212,64,75.179.212.46,0105,,75.179.212.46,cdptpabb-ci-knd-2109.cdvr.stage.charter.com,2001:1998:064f:0105::2E,cdptpabb-ci-knd-2109.cdvr.stage.charter.com
+2,,,cdptpabb-ci-klb-2203,eth0,130,75.179.212.,47,47,2001:1998:064f:0105::,2F,"POD 02, Mon 02, LB",167,75,179,212,64,75.179.212.47,0105,,75.179.212.47,cdptpabb-ci-klb-2203.cdvr.stage.charter.com,2001:1998:064f:0105::2F,cdptpabb-ci-klb-2203.cdvr.stage.charter.com
+2,,,cdptpabb-ci-klb-2204,eth0,130,75.179.212.,48,48,2001:1998:064f:0105::,30,"POD 02, Mon 02, LB",168,75,179,212,64,75.179.212.48,0105,,75.179.212.48,cdptpabb-ci-klb-2204.cdvr.stage.charter.com,2001:1998:064f:0105::30,cdptpabb-ci-klb-2204.cdvr.stage.charter.com
+2,,,cdptpabb-ci-kmr-2204,eth0,130,75.179.212.,49,49,2001:1998:064f:0105::,31,"POD 02, Mon 02, Master",169,75,179,212,64,75.179.212.49,0105,,75.179.212.49,cdptpabb-ci-kmr-2204.cdvr.stage.charter.com,2001:1998:064f:0105::31,cdptpabb-ci-kmr-2204.cdvr.stage.charter.com
+2,,,cdptpabb-ci-kmr-2205,eth0,130,75.179.212.,50,50,2001:1998:064f:0105::,32,"POD 02, Mon 02, Master",170,75,179,212,64,75.179.212.50,0105,,75.179.212.50,cdptpabb-ci-kmr-2205.cdvr.stage.charter.com,2001:1998:064f:0105::32,cdptpabb-ci-kmr-2205.cdvr.stage.charter.com
+2,,,cdptpabb-ci-kmr-2206,eth0,130,75.179.212.,51,51,2001:1998:064f:0105::,33,"POD 02, Mon 02, Master",171,75,179,212,64,75.179.212.51,0105,,75.179.212.51,cdptpabb-ci-kmr-2206.cdvr.stage.charter.com,2001:1998:064f:0105::33,cdptpabb-ci-kmr-2206.cdvr.stage.charter.com
+2,,,cdptpabb-ci-knd-2207,eth0,130,75.179.212.,52,52,2001:1998:064f:0105::,34,"POD 02, Mon 02, Worker",172,75,179,212,64,75.179.212.52,0105,,75.179.212.52,cdptpabb-ci-knd-2207.cdvr.stage.charter.com,2001:1998:064f:0105::34,cdptpabb-ci-knd-2207.cdvr.stage.charter.com
+2,,,cdptpabb-ci-knd-2208,eth0,130,75.179.212.,53,53,2001:1998:064f:0105::,35,"POD 02, Mon 02, Worker",173,75,179,212,64,75.179.212.53,0105,,75.179.212.53,cdptpabb-ci-knd-2208.cdvr.stage.charter.com,2001:1998:064f:0105::35,cdptpabb-ci-knd-2208.cdvr.stage.charter.com
+2,,,cdptpabb-ci-knd-2209,eth0,130,75.179.212.,54,54,2001:1998:064f:0105::,36,"POD 02, Mon 02, Worker",174,75,179,212,64,75.179.212.54,0105,,75.179.212.54,cdptpabb-ci-knd-2209.cdvr.stage.charter.com,2001:1998:064f:0105::36,cdptpabb-ci-knd-2209.cdvr.stage.charter.com
+2,,,osvip-2102,n/a,130,75.179.212.,55,55,2001:1998:064f:0105::,37,"POD 02, Mon 01 OS VIP",175,75,179,212,64,75.179.212.55,0105,,75.179.212.55,osvip-2102.cdvr.stage.charter.com,2001:1998:064f:0105::37,osvip-2102.cdvr.stage.charter.com
+2,,,osvip-2202,n/a,130,75.179.212.,56,56,2001:1998:064f:0105::,38,"POD 02, Mon 02 OS VIP",176,75,179,212,64,75.179.212.56,0105,,75.179.212.56,osvip-2202.cdvr.stage.charter.com,2001:1998:064f:0105::38,osvip-2202.cdvr.stage.charter.com
+2,,,vmrvip-2103,n/a,130,75.179.212.,57,57,2001:1998:064f:0105::,39,"POD 02, Mon 01, VIP worker nodes 1-3",177,75,179,212,64,75.179.212.57,0105,,75.179.212.57,vmrvip-2103.cdvr.stage.charter.com,2001:1998:064f:0105::39,vmrvip-2103.cdvr.stage.charter.com
+2,,,vmrvip-2203,n/a,130,75.179.212.,58,58,2001:1998:064f:0105::,3A,"POD 02, Mon 02, VIP worker nodes 1-2",178,75,179,212,64,75.179.212.58,0105,,75.179.212.58,vmrvip-2203.cdvr.stage.charter.com,2001:1998:064f:0105::3A,vmrvip-2203.cdvr.stage.charter.com
+2,,,dovip,n/a,130,75.179.212.,59,59,2001:1998:064f:0105::,3B,POD 02 DO VIP,179,75,179,212,64,75.179.212.59,0105,,75.179.212.59,dovip.cdvr.stage.charter.com,2001:1998:064f:0105::3B,dovip.cdvr.stage.charter.com
+2,,,Open,,130,75.179.212.,60,60,2001:1998:064f:0105::,3C,,180,75,179,212,64,75.179.212.60,0105,,,,,
+2,,,Open,,130,75.179.212.,61,61,2001:1998:064f:0105::,3D,,181,75,179,212,64,75.179.212.61,0105,,,,,
+2,,,Open,,130,75.179.212.,62,62,2001:1998:064f:0105::,3E,,182,75,179,212,64,75.179.212.62,0105,,,,,
+,,,Broadcast,,130,75.179.212,63,,,ffff:ffff:ffff:ffff,,183,75,179,212,64,75.179.212.63,0105,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+,,,"IPv4 Network: 75.179.212.64/26
+MASK: 255.255.255.192
+IPv6 Network: 2001:1998:064f:0106::/64",,330,,64,,,,"RDC 1, POD 3, VMR
+domain: cdvr.stage.charter.com",185,75,179,249,96,75.179.249.64,0106,,,,,
+,,,VRRP VIP,,330,75.179.212.,65,1,2001:1998:064f:0106::,1,,186,75,179,249,96,75.179.249.65,0106,,,,,
+,,,Router 1,,330,75.179.212.,66,2,2001:1998:064f:0106::,2,,187,75,179,249,96,75.179.249.66,0106,,,,,
+,,,Router 2,,330,75.179.212.,67,3,2001:1998:064f:0106::,3,,188,75,179,249,96,75.179.249.67,0106,,,,,
+3,ib-acw,1001,cdptpabb-ib-acw-3001,??,330,75.179.212.,68,4,2001:1998:064f:0106::,4,"POD 3, Write Accessor 1001",189,75,179,249,96,75.179.249.68,0106,,75.179.212.68,cdptpabb-ib-acw-3001.cdvr.stage.charter.com,2001:1998:064f:0106::4,cdptpabb-ib-acw-3001.cdvr.stage.charter.com
+3,ib-acw,1002,cdptpabb-ib-acw-3002,??,330,75.179.212.,69,5,2001:1998:064f:0106::,5,"POD 3, Write Accessor 1002",190,75,179,249,96,75.179.249.69,0106,,75.179.212.69,cdptpabb-ib-acw-3002.cdvr.stage.charter.com,2001:1998:064f:0106::5,cdptpabb-ib-acw-3002.cdvr.stage.charter.com
+,,,,eth0,330,75.179.212.,70,6,2001:1998:064f:0106::,6,,191,75,179,249,96,75.179.249.70,0106,,,,,
+,,,,eth0,330,75.179.212.,71,7,2001:1998:064f:0106::,7,,192,75,179,249,96,75.179.249.71,0106,,,,,
+3,ci-klv,3101,cdptpabb-ci-klv-3101,eth0,330,75.179.212.,72,8,2001:1998:064f:0106::,8,"POD 03, VMR 01 OS VIP",193,75,179,249,96,75.179.249.72,0106,,75.179.212.72,cdptpabb-ci-klv-3101.cdvr.stage.charter.com,2001:1998:064f:0106::8,cdptpabb-ci-klv-3101.cdvr.stage.charter.com
+3,ci-klb,3101,cdptpabb-ci-klb-3101,eth0,330,75.179.212.,73,9,2001:1998:064f:0106::,9,"POD 03, VMR 01 KLB",194,75,179,249,96,75.179.249.73,0106,,75.179.212.73,cdptpabb-ci-klb-3101.cdvr.stage.charter.com,2001:1998:064f:0106::9,cdptpabb-ci-klb-3101.cdvr.stage.charter.com
+3,ci-klb,3102,cdptpabb-ci-klb-3102,eth0,330,75.179.212.,74,10,2001:1998:064f:0106::,A,"POD 03, VMR 01 KLB",195,75,179,249,96,75.179.249.74,0106,,75.179.212.74,cdptpabb-ci-klb-3102.cdvr.stage.charter.com,2001:1998:064f:0106::A,cdptpabb-ci-klb-3102.cdvr.stage.charter.com
+3,ci-kmr,3101,cdptpabb-ci-kmr-3101,eth0,330,75.179.212.,75,11,2001:1998:064f:0106::,B,"POD 03, VMR 01, Master",196,75,179,249,96,75.179.249.75,0106,,75.179.212.75,cdptpabb-ci-kmr-3101.cdvr.stage.charter.com,2001:1998:064f:0106::B,cdptpabb-ci-kmr-3101.cdvr.stage.charter.com
+3,ci-kmr,3102,cdptpabb-ci-kmr-3102,eth0,330,75.179.212.,76,12,2001:1998:064f:0106::,C,"POD 03, VMR 01, Master",197,75,179,249,96,75.179.249.76,0106,,75.179.212.76,cdptpabb-ci-kmr-3102.cdvr.stage.charter.com,2001:1998:064f:0106::C,cdptpabb-ci-kmr-3102.cdvr.stage.charter.com
+3,ci-kmr,3103,cdptpabb-ci-kmr-3103,eth0,330,75.179.212.,77,13,2001:1998:064f:0106::,D,"POD 03, VMR 01, Master",198,75,179,249,96,75.179.249.77,0106,,75.179.212.77,cdptpabb-ci-kmr-3103.cdvr.stage.charter.com,2001:1998:064f:0106::D,cdptpabb-ci-kmr-3103.cdvr.stage.charter.com
+3,ci-knv,3101,cdptpabb-ci-knv-3101,eth0,330,75.179.212.,78,14,2001:1998:064f:0106::,E,"POD 03, VMR 01, Worker VIP",199,75,179,249,96,75.179.249.78,0106,,75.179.212.78,cdptpabb-ci-knv-3101.cdvr.stage.charter.com,2001:1998:064f:0106::E,cdptpabb-ci-knv-3101.cdvr.stage.charter.com
+3,ci-knv,3102,cdptpabb-ci-knv-3102,eth0,330,75.179.212.,79,15,2001:1998:064f:0106::,F,"POD 03, VMR 01, Worker VIP",200,75,179,249,96,75.179.249.79,0106,,75.179.212.79,cdptpabb-ci-knv-3102.cdvr.stage.charter.com,2001:1998:064f:0106::F,cdptpabb-ci-knv-3102.cdvr.stage.charter.com
+3,ci-knd,3101,cdptpabb-ci-knd-3101,eth0,330,75.179.212.,80,16,2001:1998:064f:0106::,10,"POD 03, VMR 01, Worker",201,75,179,249,96,75.179.249.80,0106,,75.179.212.80,cdptpabb-ci-knd-3101.cdvr.stage.charter.com,2001:1998:064f:0106::10,cdptpabb-ci-knd-3101.cdvr.stage.charter.com
+3,ci-knd,3102,cdptpabb-ci-knd-3102,eth0,330,75.179.212.,81,17,2001:1998:064f:0106::,11,"POD 03, VMR 01, Worker",202,75,179,249,96,75.179.249.81,0106,,75.179.212.81,cdptpabb-ci-knd-3102.cdvr.stage.charter.com,2001:1998:064f:0106::11,cdptpabb-ci-knd-3102.cdvr.stage.charter.com
+3,ci-knd,3103,cdptpabb-ci-knd-3103,eth0,330,75.179.212.,82,18,2001:1998:064f:0106::,12,"POD 03, VMR 01, Worker",203,75,179,249,96,75.179.249.82,0106,,75.179.212.82,cdptpabb-ci-knd-3103.cdvr.stage.charter.com,2001:1998:064f:0106::12,cdptpabb-ci-knd-3103.cdvr.stage.charter.com
+3,ci-knd,3104,cdptpabb-ci-knd-3104,eth0,330,75.179.212.,83,19,2001:1998:064f:0106::,13,"POD 03, VMR 01, Worker",204,75,179,249,96,75.179.249.83,0106,,75.179.212.83,cdptpabb-ci-knd-3104.cdvr.stage.charter.com,2001:1998:064f:0106::13,cdptpabb-ci-knd-3104.cdvr.stage.charter.com
+3,ci-knd,3105,cdptpabb-ci-knd-3105,eth0,330,75.179.212.,84,20,2001:1998:064f:0106::,14,"POD 03, VMR 01, Worker",205,75,179,249,96,75.179.249.84,0106,,75.179.212.84,cdptpabb-ci-knd-3105.cdvr.stage.charter.com,2001:1998:064f:0106::14,cdptpabb-ci-knd-3105.cdvr.stage.charter.com
+3,ci-knd,3106,cdptpabb-ci-knd-3106,eth0,330,75.179.212.,85,21,2001:1998:064f:0106::,15,"POD 03, VMR 01, Worker",206,75,179,249,96,75.179.249.85,0106,,75.179.212.85,cdptpabb-ci-knd-3106.cdvr.stage.charter.com,2001:1998:064f:0106::15,cdptpabb-ci-knd-3106.cdvr.stage.charter.com
+3,ci-klv,3201,cdptpabb-ci-klv-3201,eth0,330,75.179.212.,86,22,2001:1998:064f:0106::,16,"POD 03, VMR 02 OS VIP",207,75,179,249,96,75.179.249.86,0106,,75.179.212.86,cdptpabb-ci-klv-3201.cdvr.stage.charter.com,2001:1998:064f:0106::16,cdptpabb-ci-klv-3201.cdvr.stage.charter.com
+3,ci-klb,3201,cdptpabb-ci-klb-3201,eth0,330,75.179.212.,87,23,2001:1998:064f:0106::,17,"POD 03, VMR 02 KLB",208,75,179,249,96,75.179.249.87,0106,,75.179.212.87,cdptpabb-ci-klb-3201.cdvr.stage.charter.com,2001:1998:064f:0106::17,cdptpabb-ci-klb-3201.cdvr.stage.charter.com
+3,ci-klb,3202,cdptpabb-ci-klb-3202,eth0,330,75.179.212.,88,24,2001:1998:064f:0106::,18,"POD 03, VMR 02 KLB",209,75,179,249,96,75.179.249.88,0106,,75.179.212.88,cdptpabb-ci-klb-3202.cdvr.stage.charter.com,2001:1998:064f:0106::18,cdptpabb-ci-klb-3202.cdvr.stage.charter.com
+3,ci-kmr,3201,cdptpabb-ci-kmr-3201,eth0,330,75.179.212.,89,25,2001:1998:064f:0106::,19,"POD 03, VMR 02, Master",210,75,179,249,96,75.179.249.89,0106,,75.179.212.89,cdptpabb-ci-kmr-3201.cdvr.stage.charter.com,2001:1998:064f:0106::19,cdptpabb-ci-kmr-3201.cdvr.stage.charter.com
+3,ci-kmr,3202,cdptpabb-ci-kmr-3202,eth0,330,75.179.212.,90,26,2001:1998:064f:0106::,1A,"POD 03, VMR 02, Master",211,75,179,249,96,75.179.249.90,0106,,75.179.212.90,cdptpabb-ci-kmr-3202.cdvr.stage.charter.com,2001:1998:064f:0106::1A,cdptpabb-ci-kmr-3202.cdvr.stage.charter.com
+3,ci-kmr,3203,cdptpabb-ci-kmr-3203,eth0,330,75.179.212.,91,27,2001:1998:064f:0106::,1B,"POD 03, VMR 02, Master",212,75,179,249,96,75.179.249.91,0106,,75.179.212.91,cdptpabb-ci-kmr-3203.cdvr.stage.charter.com,2001:1998:064f:0106::1B,cdptpabb-ci-kmr-3203.cdvr.stage.charter.com
+3,ci-knv,3201,cdptpabb-ci-knv-3201,eth0,330,75.179.212.,92,28,2001:1998:064f:0106::,1C,"POD 03, VMR 02, Worker VIP",213,75,179,249,96,75.179.249.92,0106,,75.179.212.92,cdptpabb-ci-knv-3201.cdvr.stage.charter.com,2001:1998:064f:0106::1C,cdptpabb-ci-knv-3201.cdvr.stage.charter.com
+3,ci-knv,3202,cdptpabb-ci-knv-3202,eth0,330,75.179.212.,93,29,2001:1998:064f:0106::,1D,"POD 03, VMR 02, Worker VIP",214,75,179,249,96,75.179.249.93,0106,,75.179.212.93,cdptpabb-ci-knv-3202.cdvr.stage.charter.com,2001:1998:064f:0106::1D,cdptpabb-ci-knv-3202.cdvr.stage.charter.com
+3,ci-knd,3201,cdptpabb-ci-knd-3201,eth0,330,75.179.212.,94,30,2001:1998:064f:0106::,1E,"POD 03, VMR 02, Worker",215,75,179,249,96,75.179.249.94,0106,,75.179.212.94,cdptpabb-ci-knd-3201.cdvr.stage.charter.com,2001:1998:064f:0106::1E,cdptpabb-ci-knd-3201.cdvr.stage.charter.com
+3,ci-knd,3202,cdptpabb-ci-knd-3202,eth0,330,75.179.212.,95,31,2001:1998:064f:0106::,1F,"POD 03, VMR 02, Worker",216,75,179,249,96,75.179.249.95,0106,,75.179.212.95,cdptpabb-ci-knd-3202.cdvr.stage.charter.com,2001:1998:064f:0106::1F,cdptpabb-ci-knd-3202.cdvr.stage.charter.com
+3,ci-knd,3203,cdptpabb-ci-knd-3203,eth0,330,75.179.212.,96,32,2001:1998:064f:0106::,20,"POD 03, VMR 02, Worker",217,75,179,249,96,75.179.249.96,0106,,75.179.212.96,cdptpabb-ci-knd-3203.cdvr.stage.charter.com,2001:1998:064f:0106::20,cdptpabb-ci-knd-3203.cdvr.stage.charter.com
+3,ci-knd,3204,cdptpabb-ci-knd-3204,eth0,330,75.179.212.,97,33,2001:1998:064f:0106::,21,"POD 03, VMR 02, Worker",218,75,179,249,96,75.179.249.97,0106,,75.179.212.97,cdptpabb-ci-knd-3204.cdvr.stage.charter.com,2001:1998:064f:0106::21,cdptpabb-ci-knd-3204.cdvr.stage.charter.com
+3,ci-knd,3205,cdptpabb-ci-knd-3205,eth0,330,75.179.212.,98,34,2001:1998:064f:0106::,22,"POD 03, VMR 02, Worker",219,75,179,249,96,75.179.249.98,0106,,75.179.212.98,cdptpabb-ci-knd-3205.cdvr.stage.charter.com,2001:1998:064f:0106::22,cdptpabb-ci-knd-3205.cdvr.stage.charter.com
+3,ci-knd,3206,cdptpabb-ci-knd-3206,eth0,330,75.179.212.,99,35,2001:1998:064f:0106::,23,"POD 03, VMR 02, Worker",220,75,179,249,96,75.179.249.99,0106,,75.179.212.99,cdptpabb-ci-knd-3206.cdvr.stage.charter.com,2001:1998:064f:0106::23,cdptpabb-ci-knd-3206.cdvr.stage.charter.com
+3,ci-mql,3101,cdptpabb-ci-mql-3101,eth0,330,75.179.212.,100,36,2001:1998:064f:0106::,24,"POD 03, VMR 01, MemSQL 01",221,,,,,,,,75.179.212.100,cdptpabb-ci-mql-3101.cdvr.stage.charter.com,2001:1998:064f:0106::24,cdptpabb-ci-mql-3101.cdvr.stage.charter.com
+3,ci-mql,3102,cdptpabb-ci-mql-3102,eth0,330,75.179.212.,101,37,2001:1998:064f:0106::,25,"POD 03, VMR 01, MemSQL 02",222,,,,,,,,75.179.212.101,cdptpabb-ci-mql-3102.cdvr.stage.charter.com,2001:1998:064f:0106::25,cdptpabb-ci-mql-3102.cdvr.stage.charter.com
+3,ci-mql,3103,cdptpabb-ci-mql-3103,eth0,330,75.179.212.,102,38,2001:1998:064f:0106::,26,"POD 03, VMR 01, MemSQL 03",223,,,,,,,,75.179.212.102,cdptpabb-ci-mql-3103.cdvr.stage.charter.com,2001:1998:064f:0106::26,cdptpabb-ci-mql-3103.cdvr.stage.charter.com
+3,ci-mql,3201,cdptpabb-ci-mql-3201,eth0,330,75.179.212.,103,39,2001:1998:064f:0106::,27,"POD 03, VMR 02, MemSQL 01",221,,,,,,,,75.179.212.103,cdptpabb-ci-mql-3201.cdvr.stage.charter.com,2001:1998:064f:0106::27,cdptpabb-ci-mql-3201.cdvr.stage.charter.com
+3,ci-mql,3202,cdptpabb-ci-mql-3202,eth0,330,75.179.212.,104,40,2001:1998:064f:0106::,28,"POD 03, VMR 02, MemSQL 02",222,,,,,,,,75.179.212.104,cdptpabb-ci-mql-3202.cdvr.stage.charter.com,2001:1998:064f:0106::28,cdptpabb-ci-mql-3202.cdvr.stage.charter.com
+3,ci-mql,3203,cdptpabb-ci-mql-3203,eth0,330,75.179.212.,105,41,2001:1998:064f:0106::,29,"POD 03, VMR 02, MemSQL 03",223,,,,,,,,75.179.212.105,cdptpabb-ci-mql-3203.cdvr.stage.charter.com,2001:1998:064f:0106::29,cdptpabb-ci-mql-3203.cdvr.stage.charter.com
+3,ci-lbv,3001,cdptpabb-ci-lbv-3001,eth0,330,75.179.212.,106,42,2001:1998:064f:0106::,2A,"POD 03, Dash Origin VIP",227,,,,,,,,75.179.212.106,cdptpabb-ci-lbv-3001.cdvr.stage.charter.com,2001:1998:064f:0106::2A,cdptpabb-ci-lbv-3001.cdvr.stage.charter.com
+3,ci-llb,3001,cdptpabb-ci-llb-3001,eth0,330,75.179.212.,107,43,2001:1998:064f:0106::,2B,"POD 03 , Dash Origin LB",228,,,,,,,,75.179.212.107,cdptpabb-ci-llb-3001.cdvr.stage.charter.com,2001:1998:064f:0106::2B,cdptpabb-ci-llb-3001.cdvr.stage.charter.com
+3,ci-llb,3002,cdptpabb-ci-llb-3002,eth0,330,75.179.212.,108,44,2001:1998:064f:0106::,2C,"POD 03 , Dash Origin LB",229,,,,,,,,75.179.212.108,cdptpabb-ci-llb-3002.cdvr.stage.charter.com,2001:1998:064f:0106::2C,cdptpabb-ci-llb-3002.cdvr.stage.charter.com
+3,ci-lgl,3101,cdptpabb-ci-lgl-3101,eth0,330,75.179.212.,109,45,2001:1998:064f:0106::,2D,"POD 03, VMR 01 LAM Gluster",230,,,,,,,,75.179.212.109,cdptpabb-ci-lgl-3101.cdvr.stage.charter.com,2001:1998:064f:0106::2D,cdptpabb-ci-lgl-3101.cdvr.stage.charter.com
+3,ci-lgl,3102,cdptpabb-ci-lgl-3102,eth0,330,75.179.212.,110,46,2001:1998:064f:0106::,2E,"POD 03, VMR 01 LAM Gluster",231,,,,,,,,75.179.212.110,cdptpabb-ci-lgl-3102.cdvr.stage.charter.com,2001:1998:064f:0106::2E,cdptpabb-ci-lgl-3102.cdvr.stage.charter.com
+3,ci-lgl,3103,cdptpabb-ci-lgl-3103,eth0,330,75.179.212.,111,47,2001:1998:064f:0106::,2F,"POD 03, VMR 01 LAM Gluster",232,,,,,,,,75.179.212.111,cdptpabb-ci-lgl-3103.cdvr.stage.charter.com,2001:1998:064f:0106::2F,cdptpabb-ci-lgl-3103.cdvr.stage.charter.com
+3,ci-lam,3101,cdptpabb-ci-lam-3101,eth0,330,75.179.212.,112,48,2001:1998:064f:0106::,30,"POD 03, VMR 01 LAM Worker",233,,,,,,,,75.179.212.112,cdptpabb-ci-lam-3101.cdvr.stage.charter.com,2001:1998:064f:0106::30,cdptpabb-ci-lam-3101.cdvr.stage.charter.com
+3,ci-lam,3102,cdptpabb-ci-lam-3102,eth0,330,75.179.212.,113,49,2001:1998:064f:0106::,31,"POD 03, VMR 01 LAM Worker",234,,,,,,,,75.179.212.113,cdptpabb-ci-lam-3102.cdvr.stage.charter.com,2001:1998:064f:0106::31,cdptpabb-ci-lam-3102.cdvr.stage.charter.com
+3,ci-lam,3103,cdptpabb-ci-lam-3103,eth0,330,75.179.212.,114,50,2001:1998:064f:0106::,32,"POD 03, VMR 01 LAM Worker",235,,,,,,,,75.179.212.114,cdptpabb-ci-lam-3103.cdvr.stage.charter.com,2001:1998:064f:0106::32,cdptpabb-ci-lam-3103.cdvr.stage.charter.com
+3,ci-lgl,3201,cdptpabb-ci-lgl-3201,eth0,330,75.179.212.,115,51,2001:1998:064f:0106::,33,"POD 03, VMR 02 LAM Gluster",236,,,,,,,,75.179.212.115,cdptpabb-ci-lgl-3201.cdvr.stage.charter.com,2001:1998:064f:0106::33,cdptpabb-ci-lgl-3201.cdvr.stage.charter.com
+3,ci-lgl,3202,cdptpabb-ci-lgl-3202,eth0,330,75.179.212.,116,52,2001:1998:064f:0106::,34,"POD 03, VMR 02 LAM Gluster",237,,,,,,,,75.179.212.116,cdptpabb-ci-lgl-3202.cdvr.stage.charter.com,2001:1998:064f:0106::34,cdptpabb-ci-lgl-3202.cdvr.stage.charter.com
+3,ci-lgl,3203,cdptpabb-ci-lgl-3203,eth0,330,75.179.212.,117,53,2001:1998:064f:0106::,35,"POD 03, VMR 02 LAM Gluster",238,,,,,,,,75.179.212.117,cdptpabb-ci-lgl-3203.cdvr.stage.charter.com,2001:1998:064f:0106::35,cdptpabb-ci-lgl-3203.cdvr.stage.charter.com
+3,ci-lam,3201,cdptpabb-ci-lam-3201,eth0,330,75.179.212.,118,54,2001:1998:064f:0106::,36,"POD 03, VMR 02 LAM Worker",239,,,,,,,,75.179.212.118,cdptpabb-ci-lam-3201.cdvr.stage.charter.com,2001:1998:064f:0106::36,cdptpabb-ci-lam-3201.cdvr.stage.charter.com
+3,ci-lam,3202,cdptpabb-ci-lam-3202,eth0,330,75.179.212.,119,55,2001:1998:064f:0106::,37,"POD 03, VMR 02 LAM Worker",240,,,,,,,,75.179.212.119,cdptpabb-ci-lam-3202.cdvr.stage.charter.com,2001:1998:064f:0106::37,cdptpabb-ci-lam-3202.cdvr.stage.charter.com
+3,ci-lam,3203,cdptpabb-ci-lam-3203,eth0,330,75.179.212.,120,56,2001:1998:064f:0106::,38,"POD 03, VMR 02 LAM Worker",241,,,,,,,,75.179.212.120,cdptpabb-ci-lam-3203.cdvr.stage.charter.com,2001:1998:064f:0106::38,cdptpabb-ci-lam-3203.cdvr.stage.charter.com
+,,,,,330,75.179.212.,121,57,2001:1998:064f:0106::,39,,242,,,,,,,,,,,
+,,,,,330,75.179.212.,122,58,2001:1998:064f:0106::,3A,,243,,,,,,,,,,,
+,,,,,330,75.179.212.,123,59,2001:1998:064f:0106::,3B,,244,,,,,,,,,,,
+,,,,,330,75.179.212.,124,60,2001:1998:064f:0106::,3C,,245,,,,,,,,,,,
+,,,,,330,75.179.212.,125,61,2001:1998:064f:0106::,3D,,246,,,,,,,,,,,
+,,,,,330,75.179.212.,126,62,2001:1998:064f:0106::,3E,,247,75,179,249,96,75.179.249.126,0106,,,,,
+,,,Broadcast,,330,75.179.212.,127,,,ffff:ffff:ffff:ffff,,248,75,179,249,96,75.179.249.127,0106,,,,,
+,,,,,,,,,,,,249,,,,,,,,,,,
+,,,"IPv4 Network: 192.168.254.32/28
+MASK: 255.255.255.240
+IPv6 Network: 2001:1998:064f:0107::/64",,140,,32,,,,"RDC 1, POD 2, Storage Data
+domain: cdvr.stage.charter.com",250,192,168,254,32,192.168.254.32,0107,,,,,
+,,,VRRP VIP,,140,75.179.249.,33,1,2001:1998:064f:0107::,1,,251,192,168,254,32,192.168.254.33,0107,,,,,
+,,,Router 1,,140,75.179.249.,34,2,2001:1998:064f:0107::,2,,252,192,168,254,32,192.168.254.34,0107,,,,,
+,,,Router 2,,140,75.179.249.,35,3,2001:1998:064f:0107::,3,,253,192,168,254,32,192.168.254.35,0107,,,,,
+2,ib-acr,1,cdptpabb-ib-acr-2001-eth1,eth1,140,75.179.249.,36,4,2001:1998:064f:0107::,4,"POD 2, Read Accessor 1",254,192,168,254,32,192.168.254.36,0107,,,,,
+2,ib-acr,2,cdptpabb-ib-acr-2002-eth1,eth1,140,75.179.249.,37,5,2001:1998:064f:0107::,5,"POD 2, Read Accessor 2",255,192,168,254,32,192.168.254.37,0107,,,,,
+2,ib-acw,1,cdptpabb-ib-acw-2001-eth1,eth1,140,75.179.249.,38,6,2001:1998:064f:0107::,6,"POD 2, Write Accessor 1",256,192,168,254,32,192.168.254.38,0107,,,,,
+2,ib-acw,2,cdptpabb-ib-acw-2002-eth1,eth1,140,75.179.249.,39,7,2001:1998:064f:0107::,7,"POD 2, Write Accessor 2",257,192,168,254,32,192.168.254.39,0107,,,,,
+2,ib-cdv,1,cdptpabb-ib-cdv-2001-eth1,eth1,140,75.179.249.,40,8,2001:1998:064f:0107::,8,"POD 2, COSM GUI 1",258,192,168,254,32,192.168.254.40,0107,,,,,
+,,,Open,,140,75.179.249.,41,9,2001:1998:064f:0107::,9,,259,192,168,254,32,192.168.254.41,0107,,,,,
+,,,Open,,140,75.179.249.,42,10,2001:1998:064f:0107::,A,,260,192,168,254,32,192.168.254.42,0107,,,,,
+,,,Open,,140,75.179.249.,43,11,2001:1998:064f:0107::,B,,261,192,168,254,32,192.168.254.43,0107,,,,,
+,,,Open,,140,75.179.249.,44,12,2001:1998:064f:0107::,C,,262,192,168,254,32,192.168.254.44,0107,,,,,
+,,,Open,,140,75.179.249.,45,13,2001:1998:064f:0107::,D,,263,192,168,254,32,192.168.254.45,0107,,,,,
+,,,Open,,140,75.179.249.,46,14,2001:1998:064f:0107::,E,,264,192,168,254,32,192.168.254.46,0107,,,,,
+,,,Broadcast,,140,75.179.249.,47,,,ffff:ffff:ffff:ffff,,265,192,168,254,32,192.168.254.47,0107,,,,,
+,,,,,,,,,,,,266,,,,,,,,,,,
+,,,"IPv4 Network: 192.168.254.48/28
+MASK: 255.255.255.240
+IPv6 Network: 2001:1998:064f:010a::/64",,340,,48,,,,"RDC 1, POD 3, Storage Data
+domain: cdvr.stage.charter.com",267,192,168,254,48,192.168.254.48,010a,,,,,
+,,,VRRP VIP,,340,75.179.249.,49,1,2001:1998:064f:010a::,1,,268,192,168,254,48,192.168.254.49,010a,,,,,
+,,,Router 1,,340,75.179.249.,50,2,2001:1998:064f:010a::,2,,269,192,168,254,48,192.168.254.50,010a,,,,,
+,,,Router 2,,340,75.179.249.,51,3,2001:1998:064f:010a::,3,,270,192,168,254,48,192.168.254.51,010a,,,,,
+3,ib-acr,1001,cdptpabb-ib-acr-3001-eth1,eth1,340,75.179.249.,52,4,2001:1998:064f:010a::,4,"POD 3, Read Accessor 1001",271,192,168,254,48,192.168.254.52,010a,,,,,
+3,ib-acr,1002,cdptpabb-ib-acr-3002-eth1,eth1,340,75.179.249.,53,5,2001:1998:064f:010a::,5,"POD 3, Read Accessor 1002",272,192,168,254,48,192.168.254.53,010a,,,,,
+3,ib-acw,1001,cdptpabb-ib-acw-3001-eth1,eth1,340,75.179.249.,54,6,2001:1998:064f:010a::,6,"POD 3, Write Accessor 1001",273,192,168,254,48,192.168.254.54,010a,,,,,
+3,ib-acw,1002,cdptpabb-ib-acw-3002-eth1,eth1,340,75.179.249.,55,7,2001:1998:064f:010a::,7,"POD 3, Write Accessor 1002",274,192,168,254,48,192.168.254.55,010a,,,,,
+,,,Open,,340,75.179.249.,56,8,2001:1998:064f:010a::,8,,275,192,168,254,48,192.168.254.56,010a,,,,,
+,,,Open,,340,75.179.249.,57,9,2001:1998:064f:010a::,9,,276,192,168,254,48,192.168.254.57,010a,,,,,
+,,,Open,,340,75.179.249.,58,10,2001:1998:064f:010a::,A,,277,192,168,254,48,192.168.254.58,010a,,,,,
+,,,Open,,340,75.179.249.,59,11,2001:1998:064f:010a::,B,,278,192,168,254,48,192.168.254.59,010a,,,,,
+,,,Open,,340,75.179.249.,60,12,2001:1998:064f:010a::,C,,279,192,168,254,48,192.168.254.60,010a,,,,,
+,,,Open,,340,75.179.249.,61,13,2001:1998:064f:010a::,FALSE,,280,192,168,254,48,192.168.254.61,010a,,,,,
+,,,Open,,340,75.179.249.,62,14,2001:1998:064f:010a::,E,,281,192,168,254,48,192.168.254.62,010a,,,,,
+,,,Broadcast,,340,75.179.249.,63,,,ffff:ffff:ffff:ffff,,282,192,168,254,48,192.168.254.63,010a,,,,,
+,,,,,,,,,,,,283,,,,,,,,,,,
+,,,"IPv4 Network: 75.179.249.128/27
+MASK: 255.255.255.224
+IPv6 Network: 2001:1998:064f:0108::/64",,150,,128,,,,"RDC 1 Misc cDVR VMs
+domain: cdvr.stage.charter.com",284,75,179,249,128,75.179.249.128,0108,,,,,
+,,,VRRP VIP,,150,75.179.249.,129,1,2001:1998:064f:0108::,1,,285,75,179,249,128,75.179.249.129,0108,,,,,
+,,,Router 1,,150,75.179.249.,130,2,2001:1998:064f:0108::,2,,286,75,179,249,128,75.179.249.130,0108,,,,,
+,,,Router 2,,150,75.179.249.,131,3,2001:1998:064f:0108::,3,,287,75,179,249,128,75.179.249.131,0108,,,,,
+2,ib-cdv,1,cdptpabb-ib-cdv-0001,eth0,150,75.179.249.,132,4,2001:1998:064f:0108::,4,"POD 2, COSM GUI 1",288,75,179,249,128,75.179.249.132,0108,,75.179.249.132,cdptpabb-ib-cdv-0001.cdvr.stage.charter.com,2001:1998:064f:0108::4,cdptpabb-ib-cdv-0001.cdvr.stage.charter.com
+2,ci-dpl,1,cdptpabb-ci-dpl-0001,eth0,150,75.179.249.,133,5,2001:1998:064f:0108::,5,"POD 2, Deployer",289,75,179,249,128,75.179.249.133,0108,,75.179.249.133,cdptpabb-ci-dpl-0001.cdvr.stage.charter.com,2001:1998:064f:0108::5,cdptpabb-ci-dpl-0001.cdvr.stage.charter.com
+2,ch-drg,1,cdptpabb-ch-drg-0001,eth0,150,75.179.249.,134,6,2001:1998:064f:0108::,6,Docker Registry,290,75,179,249,128,75.179.249.134,0108,,75.179.249.134,cdptpabb-ch-drg-0001.cdvr.stage.charter.com,2001:1998:064f:0108::6,cdptpabb-ch-drg-0001.cdvr.stage.charter.com
+2,ch-utl,2,cdptpabb-ch-utl-0002,eth0,150,75.179.249.,135,7,2001:1998:064f:0108::,7,Utillity Server 2 (w/Xwin),291,75,179,249,128,75.179.249.135,0108,,,,,
+2,tk-med,1,cdptpabb-tk-med-2001,eth0,150,75.179.249.,136,8,2001:1998:064f:0108::,8,Tektronix Medius,292,75,179,249,128,75.179.249.136,0108,,,,,
+2,tk-sen,1,cdptpabb-tk-sen-2001,eth0,150,75.179.249.,137,9,2001:1998:064f:0108::,9,Tektronix Sentry ABR,293,75,179,249,128,75.179.249.137,0108,,,,,
+2,ch-mon,1,cdptpabb-ch-mon-2001,eth0,150,75.179.249.,138,10,2001:1998:064f:0108::,A,Reddis,294,75,179,249,128,75.179.249.138,0108,,,,,
+2,ch-mon,2,cdptpabb-ch-mon-2002,eth0,150,75.179.249.,139,11,2001:1998:064f:0108::,B,RabbitMQ,295,75,179,249,128,75.179.249.139,0108,,,,,
+2,ch-mon,3,cdptpabb-ch-mon-2003,eth0,150,75.179.249.,140,12,2001:1998:064f:0108::,C,Sensu,296,75,179,249,128,75.179.249.140,0108,,,,,
+2,ch-mon,4,cdptpabb-ch-mon-2004,eth0,150,75.179.249.,141,13,2001:1998:064f:0108::,D,Uchiwa,297,75,179,249,128,75.179.249.141,0108,,,,,
+,,,cdptpabb-iq-iqp-2001,eth0,150,75.179.249.,142,14,2001:1998:064f:0108::,E,Telestream Surveyor ABR Passive,298,75,179,249,128,75.179.249.142,0108,,,,,
+,,,cdptpabb-iq-iqp-2002,eth0,150,75.179.249.,143,15,2001:1998:064f:0108::,F,Telestream Surveyor ABR Active,299,75,179,249,128,75.179.249.143,0108,,,,,
+,,,cdptpabb-iq-iqv-2001,eth0,150,75.179.249.,144,16,2001:1998:064f:0108::,10,Telestream Surveyor iVMS,300,75,179,249,128,75.179.249.144,0108,,,,,
+,,,cdptpabb-ci-dpl-2101,eth0,150,75.179.249.,145,17,2001:1998:064f:0108::,11,"POD 2, VMR 1, OS 3.7 Deployer",301,75,179,249,128,75.179.249.145,0108,,,,,
+,,,cdptpabb-ci-dpl-2201,eth0,150,75.179.249.,146,18,2001:1998:064f:0108::,12,"POD 2, VMR 2, OS 3.7 Deployer",302,75,179,249,128,75.179.249.146,0108,,,,,
+,,,cdptpabb-ci-dpl-3101,eth0,150,75.179.249.,147,19,2001:1998:064f:0108::,13,"POD 3, VMR 1, OS 3.7 Deployer",303,75,179,249,128,75.179.249.147,0108,,75.179.212.121,cdptpabb-ci-dpl-3101.cdvr.stage.charter.com,,
+,,,cdptpabb-ci-dpl-3201,eth0,150,75.179.249.,148,20,2001:1998:064f:0108::,14,"POD 3, VMR 2, OS 3.7 Deployer",304,75,179,249,128,75.179.249.148,0108,,75.179.212.122,cdptpabb-ci-dpl-3201.cdvr.stage.charter.com,,
+,,,Open,,150,75.179.249.,149,21,2001:1998:064f:0108::,15,,305,75,179,249,128,75.179.249.149,0108,,,,,
+,,,Open,,150,75.179.249.,150,22,2001:1998:064f:0108::,16,,306,75,179,249,128,75.179.249.150,0108,,,,,
+,,,Open,,150,75.179.249.,151,23,2001:1998:064f:0108::,17,,307,75,179,249,128,75.179.249.151,0108,,,,,
+,,,Open,,150,75.179.249.,152,24,2001:1998:064f:0108::,18,,308,75,179,249,128,75.179.249.152,0108,,,,,
+,,,Open,,150,75.179.249.,153,25,2001:1998:064f:0108::,19,,309,75,179,249,128,75.179.249.153,0108,,,,,
+,,,Open,,150,75.179.249.,154,26,2001:1998:064f:0108::,1A,,310,75,179,249,128,75.179.249.154,0108,,,,,
+,,,Open,,150,75.179.249.,155,27,2001:1998:064f:0108::,1B,,311,75,179,249,128,75.179.249.155,0108,,,,,
+,,,Open,,150,75.179.249.,156,28,2001:1998:064f:0108::,1C,,312,75,179,249,128,75.179.249.156,0108,,,,,
+,,,Open,,150,75.179.249.,157,29,2001:1998:064f:0108::,1D,,313,75,179,249,128,75.179.249.157,0108,,,,,
+,,,Open,,150,75.179.249.,158,30,2001:1998:064f:0108::,1E,,314,75,179,249,128,75.179.249.158,0108,,,,,
+,,,Broadcast,,150,75.179.249.,159,,,ffff:ffff:ffff:ffff,,315,75,179,249,128,75.179.249.159,0108,,,,,
+,,,,,,,,,,,,316,,,,,,,,,,,
+,,,"IPv4 Network: 75.179.249.192/28
+MASK: 255.255.255.240
+IPv6 Network: 2001:1998:064f:010b::/64",,350,,192,,,,"RDC 1 MemSQL
+domain: cdvr.stage.charter.com",317,75,179,249,192,75.179.249.192,010b,,,,,
+,,,VRRP VIP,,350,75.179.249.,193,1,2001:1998:064f:010b::,1,,318,75,179,249,192,75.179.249.193,010b,,,,,
+,,,Router 1,,350,75.179.249.,194,2,2001:1998:064f:010b::,2,,319,75,179,249,192,75.179.249.194,010b,,,,,
+,,,Router 2,,350,75.179.249.,195,3,2001:1998:064f:010b::,3,,320,75,179,249,192,75.179.249.195,010b,,,,,
+3,ci-mql,1,cdptpabb-ci-mql-0001,eth0,350,75.179.249.,196,4,2001:1998:064f:010b::,4,POD 3 MemSQL 1,321,75,179,249,192,75.179.249.196,010b,,75.179.249.196,cdptpabb-ci-mql-0001.cdvr.stage.charter.com,2001:1998:064f:010b::4,cdptpabb-ci-mql-0001.cdvr.stage.charter.com
+3,ci-mql,2,cdptpabb-ci-mql-0002,eth0,350,75.179.249.,197,5,2001:1998:064f:010b::,5,POD 3 MemSQL 2,322,75,179,249,192,75.179.249.197,010b,,75.179.249.197,cdptpabb-ci-mql-0002.cdvr.stage.charter.com,2001:1998:064f:010b::5,cdptpabb-ci-mql-0002.cdvr.stage.charter.com
+3,ci-mql,3,cdptpabb-ci-mql-0003,eth0,350,75.179.249.,198,6,2001:1998:064f:010b::,6,POD 3 MemSQL 3,323,75,179,249,192,75.179.249.198,010b,,75.179.249.198,cdptpabb-ci-mql-0003.cdvr.stage.charter.com,2001:1998:064f:010b::6,cdptpabb-ci-mql-0003.cdvr.stage.charter.com
+3,ci-mql,4,cdptpabb-ci-mql-0004,eth0,350,75.179.249.,199,7,2001:1998:064f:010b::,7,POD 3 MemSQL 4,324,75,179,249,192,75.179.249.199,010b,,75.179.249.199,cdptpabb-ci-mql-0004.cdvr.stage.charter.com,2001:1998:064f:010b::7,cdptpabb-ci-mql-0004.cdvr.stage.charter.com
+3,ci-mql,5,cdptpabb-ci-mql-0005,eth0,350,75.179.249.,200,8,2001:1998:064f:010b::,8,POD 3 MemSQL 5,325,75,179,249,192,75.179.249.200,010b,,75.179.249.200,cdptpabb-ci-mql-0005.cdvr.stage.charter.com,2001:1998:064f:010b::8,cdptpabb-ci-mql-0005.cdvr.stage.charter.com
+,,,Open,,350,75.179.249.,201,9,2001:1998:064f:010b::,9,,326,75,179,249,192,75.179.249.201,010b,,,,,
+,,,Open,,350,75.179.249.,202,10,2001:1998:064f:010b::,A,,327,75,179,249,192,75.179.249.202,010b,,,,,
+,,,Open,,350,75.179.249.,203,11,2001:1998:064f:010b::,B,,328,75,179,249,192,75.179.249.203,010b,,,,,
+,,,Open,,350,75.179.249.,204,12,2001:1998:064f:010b::,C,,329,75,179,249,192,75.179.249.204,010b,,,,,
+,,,Open,,350,75.179.249.,205,13,2001:1998:064f:010b::,D,,330,75,179,249,192,75.179.249.205,010b,,,,,
+,,,Open,,350,75.179.249.,206,14,2001:1998:064f:010b::,E,,331,75,179,249,192,75.179.249.206,010b,,,,,
+,,,Broadcast,,350,75.179.249.,207,,,ffff:ffff:ffff:ffff,,332,75,179,249,192,75.179.249.207,010b,,,,,
+,,,,,,,,,,,,333,,,,,,,,,,,
+,,,"IPv4 Network: 192.168.254.0/27
+MASK: 255.255.255.224
+IPv6 Network: 2001:1998:064f:0109::/64",,210,,0,,,,"RDC 1 Slicestores (Object Storage)
+domain: cdvr.stage.charter.com",334,192,168,254,0,192.168.254.0,0109,,,,,
+,,,VRRP VIP,,210,75.179.249.,1,1,2001:1998:064f:0109::,1,,335,192,168,254,0,192.168.254.1,0109,,,,,
+,,,Router 1,,210,75.179.249.,2,2,2001:1998:064f:0109::,2,,336,192,168,254,0,192.168.254.2,0109,,,,,
+,,,Router 2,,210,75.179.249.,3,3,2001:1998:064f:0109::,3,,337,192,168,254,0,192.168.254.3,0109,,,,,
+4,ci-sto,1,cdptpabb-ci-sto-0001-1,eth0,210,75.179.249.,4,4,2001:1998:064f:0109::,4,"POD 4 Storage SIOC 1, 1",338,192,168,254,0,192.168.254.4,0109,,75.179.249.4,cdptpabb-ci-sto-0001-1.cdvr.stage.charter.com,2001:1998:064f:0109::4,cdptpabb-ci-sto-0001-1.cdvr.stage.charter.com
+4,ci-sto,1,cdptpabb-ci-sto-0001-2,eth0,210,75.179.249.,5,5,2001:1998:064f:0109::,5,"POD 4 Storage SIOC 2, 1",339,192,168,254,0,192.168.254.5,0109,,75.179.249.5,cdptpabb-ci-sto-0001-2.cdvr.stage.charter.com,2001:1998:064f:0109::5,cdptpabb-ci-sto-0001-2.cdvr.stage.charter.com
+4,ci-sto,2,cdptpabb-ci-sto-0002-1,eth0,210,75.179.249.,6,6,2001:1998:064f:0109::,6,"POD 4 Storage SIOC 1, 2",340,192,168,254,0,192.168.254.6,0109,,75.179.249.6,cdptpabb-ci-sto-0002-1.cdvr.stage.charter.com,2001:1998:064f:0109::6,cdptpabb-ci-sto-0002-1.cdvr.stage.charter.com
+4,ci-sto,2,cdptpabb-ci-sto-0002-2,eth0,210,75.179.249.,7,7,2001:1998:064f:0109::,7,"POD 4 Storage SIOC 2, 2",341,192,168,254,0,192.168.254.7,0109,,75.179.249.7,cdptpabb-ci-sto-0002-2.cdvr.stage.charter.com,2001:1998:064f:0109::7,cdptpabb-ci-sto-0002-2.cdvr.stage.charter.com
+4,ci-sto,3,cdptpabb-ci-sto-0003-1,eth0,210,75.179.249.,8,8,2001:1998:064f:0109::,8,"POD 4 Storage SIOC 1, 3",342,192,168,254,0,192.168.254.8,0109,,75.179.249.8,cdptpabb-ci-sto-0003-1.cdvr.stage.charter.com,2001:1998:064f:0109::8,cdptpabb-ci-sto-0003-1.cdvr.stage.charter.com
+4,ci-sto,3,cdptpabb-ci-sto-0003-2,eth0,210,75.179.249.,9,9,2001:1998:064f:0109::,9,"POD 4 Storage SIOC 2, 3",343,192,168,254,0,192.168.254.9,0109,,75.179.249.9,cdptpabb-ci-sto-0003-2.cdvr.stage.charter.com,2001:1998:064f:0109::9,cdptpabb-ci-sto-0003-2.cdvr.stage.charter.com
+4,ci-sto,4,cdptpabb-ci-sto-0004-1,eth0,210,75.179.249.,10,10,2001:1998:064f:0109::,A,"POD 4 Storage SIOC 1, 4",344,192,168,254,0,192.168.254.10,0109,,75.179.249.10,cdptpabb-ci-sto-0004-1.cdvr.stage.charter.com,2001:1998:064f:0109::A,cdptpabb-ci-sto-0004-1.cdvr.stage.charter.com
+4,ci-sto,4,cdptpabb-ci-sto-0004-2,eth0,210,75.179.249.,11,11,2001:1998:064f:0109::,B,"POD 4 Storage SIOC 2, 4",345,192,168,254,0,192.168.254.11,0109,,75.179.249.11,cdptpabb-ci-sto-0004-2.cdvr.stage.charter.com,2001:1998:064f:0109::B,cdptpabb-ci-sto-0004-2.cdvr.stage.charter.com
+4,ci-sto,5,cdptpabb-ci-sto-0005-1,eth0,210,75.179.249.,12,12,2001:1998:064f:0109::,C,"POD 4 Storage SIOC 1, 5",346,192,168,254,0,192.168.254.12,0109,,75.179.249.12,cdptpabb-ci-sto-0005-1.cdvr.stage.charter.com,2001:1998:064f:0109::C,cdptpabb-ci-sto-0005-1.cdvr.stage.charter.com
+4,ci-sto,5,cdptpabb-ci-sto-0005-2,eth0,210,75.179.249.,13,13,2001:1998:064f:0109::,D,"POD 4 Storage SIOC 2, 5",347,192,168,254,0,192.168.254.13,0109,,75.179.249.13,cdptpabb-ci-sto-0005-2.cdvr.stage.charter.com,2001:1998:064f:0109::D,cdptpabb-ci-sto-0005-2.cdvr.stage.charter.com
+4,ci-sto,6,cdptpabb-ci-sto-0006-1,eth0,210,75.179.249.,14,14,2001:1998:064f:0109::,E,"POD 4 Storage SIOC 1, 6",348,192,168,254,0,192.168.254.14,0109,,75.179.249.14,cdptpabb-ci-sto-0006-1.cdvr.stage.charter.com,2001:1998:064f:0109::E,cdptpabb-ci-sto-0006-1.cdvr.stage.charter.com
+4,ci-sto,6,cdptpabb-ci-sto-0006-2,eth0,210,75.179.249.,15,15,2001:1998:064f:0109::,F,"POD 4 Storage SIOC 2, 6",349,192,168,254,0,192.168.254.15,0109,,75.179.249.15,cdptpabb-ci-sto-0006-2.cdvr.stage.charter.com,2001:1998:064f:0109::F,cdptpabb-ci-sto-0006-2.cdvr.stage.charter.com
+4,ci-sto,7,cdptpabb-ci-sto-0007-1,eth0,210,75.179.249.,16,16,2001:1998:064f:0109::,10,"POD 4 Storage SIOC 1, 7",350,192,168,254,0,192.168.254.16,0109,,75.179.249.16,cdptpabb-ci-sto-0007-1.cdvr.stage.charter.com,2001:1998:064f:0109::10,cdptpabb-ci-sto-0007-1.cdvr.stage.charter.com
+4,ci-sto,7,cdptpabb-ci-sto-0007-2,eth0,210,75.179.249.,17,17,2001:1998:064f:0109::,11,"POD 4 Storage SIOC 2, 7",351,192,168,254,0,192.168.254.17,0109,,75.179.249.17,cdptpabb-ci-sto-0007-2.cdvr.stage.charter.com,2001:1998:064f:0109::11,cdptpabb-ci-sto-0007-2.cdvr.stage.charter.com
+,,,,,210,75.179.249.,18,18,2001:1998:064f:0109::,12,,352,192,168,254,0,192.168.254.18,0109,,,,,
+,,,,,210,75.179.249.,19,19,2001:1998:064f:0109::,13,,353,192,168,254,0,192.168.254.19,0109,,,,,
+,,,,,210,75.179.249.,20,20,2001:1998:064f:0109::,14,,354,192,168,254,0,192.168.254.20,0109,,,,,
+,,,,,210,75.179.249.,21,21,2001:1998:064f:0109::,15,,355,192,168,254,0,192.168.254.21,0109,,,,,
+,,,,,210,75.179.249.,22,22,2001:1998:064f:0109::,16,,356,192,168,254,0,192.168.254.22,0109,,,,,
+,,,,,210,75.179.249.,23,23,2001:1998:064f:0109::,17,,357,192,168,254,0,192.168.254.23,0109,,,,,
+,,,,,210,75.179.249.,24,24,2001:1998:064f:0109::,18,,358,192,168,254,0,192.168.254.24,0109,,,,,
+,,,,,210,75.179.249.,25,25,2001:1998:064f:0109::,19,,359,192,168,254,0,192.168.254.25,0109,,,,,
+,,,,,210,75.179.249.,26,26,2001:1998:064f:0109::,1A,,360,192,168,254,0,192.168.254.26,0109,,,,,
+,,,,,210,75.179.249.,27,27,2001:1998:064f:0109::,1B,,361,192,168,254,0,192.168.254.27,0109,,,,,
+,,,,,210,75.179.249.,28,28,2001:1998:064f:0109::,1C,,362,192,168,254,0,192.168.254.28,0109,,,,,
+,,,,,210,75.179.249.,29,29,2001:1998:064f:0109::,1D,,363,192,168,254,0,192.168.254.29,0109,,,,,
+,,,,,210,75.179.249.,30,30,2001:1998:064f:0109::,1E,,364,192,168,254,0,192.168.254.30,0109,,,,,
+,,,Broadcast,,210,75.179.249.,31,,,ffff:ffff:ffff:ffff,,365,192,168,254,0,192.168.254.31,0109,,,,,
+,,,,,,,,,,,,366,,,,,,,,,,,
+,,,"IPv4 Network: 75.179.251.128/30
+MASK: 255.255.255.252
+IPv6 Network: 2001:1998:064f:0000::0/126",,,,,,,,"Gemini Mid-tier 01
+domain: cdvr.stage.charter.com",367,,,,,,,,,,,
+,,,Network,,,75.179.251.,128,,2001:1998:064f:0000::,0,,368,,,,,,,,,,,
+,,,Router,,,75.179.251.,129,,2001:1998:064f:0000::,1,,369,,,,,,,,,,,
+,,,cdptpabb-de-gmt0001,,,75.179.251.,130,,2001:1998:064f:0000::,2,"slot 7, bottom port 1ÿ",370,,,,,,,,75.179.251.130,cdptpabb-de-gmt0001.cdvr.stage.charter.com,2001:1998:064f:0000::2,cdptpabb-de-gmt0001.cdvr.stage.charter.com
+,,,Broadcast,,,75.179.251.,131,,2001:1998:064f:0000::,3,,371,,,,,,,,,,,
+,,,,,,,,,,,,372,,,,,,,,,,,
+,,,"IPv4 Network: 75.179.251.132/30
+MASK: 255.255.255.252
+IPv6 Network: 2001:1998:064f:0000::4/64",,,,,,,,"Gemini Mid-tier 02
+domain: cdvr.stage.charter.com",373,,,,,,,,,,,
+,,,Network,,,75.179.251.,132,,2001:1998:064f:0000::,4,,374,,,,,,,,,,,
+,,,Router,,,75.179.251.,133,,2001:1998:064f:0000::,5,,375,,,,,,,,,,,
+,,,cdptpabb-de-gmt0002,,,75.179.251.,134,,2001:1998:064f:0000::,6,"slot 3, bottom port 1ÿ",376,,,,,,,,75.179.251.134,cdptpabb-de-gmt0002.cdvr.stage.charter.com,2001:1998:064f:0000::6,cdptpabb-de-gmt0002.cdvr.stage.charter.com
+,,,Broadcast,,,75.179.251.,135,,2001:1998:064f:0000::,7,,377,,,,,,,,,,,
+,,,,,,,,,,,,378,,,,,,,,,,,
+,,,"IPv4 Network: 75.179.251.136/30
+MASK: 255.255.255.252
+IPv6 Network: 2001:1998:064f:0000::8/64",,,,,,,,"Gemini Mid-tier 02
+domain: cdvr.stage.charter.com",379,,,,,,,,,,,
+,,,Network,,,75.179.251.,136,,2001:1998:064f:0000::,8,,380,,,,,,,,,,,
+,,,Router,,,75.179.251.,137,,2001:1998:064f:0000::,9,,381,,,,,,,,,,,
+,,,cdptpabb-de-gen0001,,,75.179.251.,138,,2001:1998:064f:0000::,a,"slot 5, bottom port 1ÿ",382,,,,,,,,75.179.251.138,cdptpabb-de-gen0001.cdvr.stage.charter.com,2001:1998:064f:0000::a,cdptpabb-de-gen0001.cdvr.stage.charter.com
+,,,Broadcast,,,75.179.251.,139,,2001:1998:064f:0000::,b,,383,,,,,,,,,,,
+,,,,,,,,,,,,384,,,,,,,,,,,
+,,,"IPv4 Network: 75.179.251.140/30
+MASK: 255.255.255.252
+IPv6 Network: 2001:1998:064f:0000::c/64",,,,,,,,"Gemini Mid-tier 02
+domain: cdvr.stage.charter.com",385,,,,,,,,,,,
+,,,Network,,,75.179.251.,140,,2001:1998:064f:0000::,c,,386,,,,,,,,,,,
+,,,Router,,,75.179.251.,141,,2001:1998:064f:0000::,d,,387,,,,,,,,,,,
+,,,cdptpabb-de-gen0002,,,75.179.251.,142,,2001:1998:064f:0000::,e,"slot 1, bottom port 1ÿ",388,,,,,,,,75.179.251.142,cdptpabb-de-gen0002.cdvr.stage.charter.com,2001:1998:064f:0000::e,cdptpabb-de-gen0002.cdvr.stage.charter.com
+,,,Broadcast,,,75.179.251.,143,,2001:1998:064f:0000::,f,,389,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,

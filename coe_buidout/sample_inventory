@@ -1,0 +1,388 @@
+################################################################################################################
+# SAMPLE inventory (owner: SAMPLE (sample) (sample@cisco.com))
+#
+# For a full set of options and values see:
+# https://raw.githubusercontent.com/openshift/openshift-ansible/master/inventory/byo/hosts.origin.example
+# ../openshift-ansible/inventory/byo/hosts.origin.example
+#
+# When adding labels to your nodes please follow the guidance in this document:
+# https://wiki.cisco.com/pages/viewpage.action?pageId=64776674
+################################################################################################################
+
+
+[all:vars]
+cluster_timezone=UTC
+
+### We are separating the process of upgrading cluster node operating systems from upgrading Openshift
+### with this, we will no longer need to reboot the nodes after the pre-installation step
+### this action is selectable now, with the following option. Normally now set to false.
+reboot_after_preinstall=false
+reboot_timeout_after_preinstall=120
+reboot_pause_after_preinstall=10
+
+openshift_master_default_subdomain=<DOMAIN>  ### SET THIS and remove this comment
+
+### In a HA LB cluster     | the <MASTER-API-HOSTNAME> will the NAME of the keepalived_vip (eg ‘ivpcoe-vip’)
+### In a non HA LB cluster | the <MASTER-API-HOSTNAME> will the NAME of the main LB (eg 'ivpcoe-lb1')
+### With a single Master   | the <MASTER-API-HOSTNAME> will the NAME of the MASTER node (eg ‘ivpcoe-master1’)
+### In all cases use NAMEs NOT IP Addresses.
+### In all cases DO NOT append DNS domain name.
+openshift_master_cluster_hostname=<MASTER-API-HOSTNAME>  ### SET THIS and remove this comment
+
+### Unless you have a specific reason to change the public_hostname leave this as is
+openshift_master_cluster_public_hostname={{ openshift_master_cluster_hostname }}.{{ openshift_master_default_subdomain }}
+
+### In a HA LB cluster     | set the <Virtual Floating IP> to the VIP ip and configure the <MASTER-API-FQDN> above
+###                        | COE is 'magic' and will work out everything for you from these settings
+### Access the UI          | insert the VIP and <MASTER-API-FQDN> in the hosts file on your local device
+###                        | or define it in your DNS (no not the Openshift clusters DNS or host file)
+### keepalived_vrrpid      | is an integer between 1-255 for the VRRPID that is unique to the clusters subnet
+#keepalived_vip=<Virtual Floating IP>  ### SET THIS and remove this comment
+#keepalived_interface=<node interface on load balancers for VIP>  ### SET THIS and remove this comment
+#keepalived_vrrpid=<uniqueId>  ### SET THIS and remove this comment
+
+
+### We are separating the process of upgrading cluster node operating systems from upgrading Openshift
+### with this, we will no longer need to run an yum upgrade all in the pre-installation step
+### this action is selectable now, with the following option. Normally now set to false.
+yum_upgrade_during_preinstall=false
+
+yumrepo_url=http://<DEPLOYER-IP>/centos/7/ ### SET THIS and remove this comment
+
+#values may be a comma separated list to specify additional registries
+#the deployers registry (eg <DEPLOYER-IP>:5000) must be the first entry in this list
+openshift_docker_additional_registries=<DEPLOYER-IP>:5000 ### SET THIS and remove this comment
+openshift_docker_insecure_registries=<DEPLOYER-IP>:5000 ### SET THIS and remove this comment
+openshift_docker_blocked_registries=docker.io
+
+#mandatory list of at least 1 NTP server(s) accessible to all cluster nodes (with alternative examples)
+#setting a value overrides the default upstream ntp server list
+# Please don't use the OpenShift Masters as NTP servers, no longer supported !!!
+# You can now use IP or FQDN for your NTP servers
+##ntp_servers=["<NTP_SERVER1>","<NTP_SERVER2>","<NTP_SERVER3>"]
+
+ntp_servers=["0.centos.pool.ntp.org","1.centos.pool.ntp.org","2.centos.pool.ntp.org"]
+
+openshift_disable_check=disk_availability,docker_storage,docker_image_availability,package_availability
+
+### Apply additional performance tuning via custom tuned profile for specific use cases such as:
+### - Data Plane (dp), Control Plane (cp), etc.
+#
+# coe_tuned_profile controls what tuned profile to apply after the COE is deployed and has the following
+# format:
+#         coe_tuned_profile=<profile_name>
+# where profile_name can be set to DataPlane, ControlPlane, etc. Please note that these tuned profiles
+# are mutually exclusive and only one of them MUST be specified.
+#
+# By default, coe_tuned_profile is not set and thus COE tuned profile functionality is disabled.
+# Currently only "DataPlane" profile is supported and can be enabled by uncommenting the following line.
+#coe_tuned_profile=DataPlane
+
+# Create an OSEv3 group that contains the masters and nodes groups
+[OSEv3:children]
+masters
+nodes
+etcd
+lb
+glusterfs
+new_nodes
+
+
+# Set variables common for all OSEv3 hosts
+[OSEv3:vars]
+ansible_ssh_user=root
+ansible_become=true
+debug_level=2
+deployment_type=origin
+openshift_image_tag=v3.7.2
+openshift_install_examples=false
+openshift_master_cluster_method=native
+openshift_pkg_version=-3.7.2
+openshift_release=v3.7
+
+# increase max number of inflight requests
+openshift_master_max_requests_inflight=1000
+
+#############################################################################################################
+
+### GlusterFS Container Native Storage (CNS) configuration ###
+###    The CNS implementation does use the hosted OpenShift router and as such you must
+###    enable the `openshift_hosted_manage_router=True`
+###  Warning !!
+###     - Make sure the `openshift_hosted_router_selector` value is set only for GlusterFS nodes
+###     and doesn't clash with Bespoke IPfailOver labels
+###
+###  NOTE:
+###     - full list see https://github.com/openshift/openshift-ansible/tree/release-3.7/roles/openshift_storage_glusterfs
+###     - you must add/ have a resolvable FQDN heketi-storage-glusterfs.<DOMAIN>
+###       where <DOMAIN> value was defined in 'openshift_master_default_subdomain'
+
+#############################################################################################################
+
+## By default the StorageClass is created which allows Dynamic Provision out of the box
+##  Should you want to reverse the behaviour, set the value to 'False'
+openshift_storage_glusterfs_block_storageclass=True
+
+openshift_storage_glusterfs_namespace=glusterfs
+openshift_storage_glusterfs_name=storage
+
+## Overwrite the default GlusterFS images path so we can have a unified/ single
+## docker registry path location
+##  Warning !!
+##      Don't change the values!!
+openshift_storage_glusterfs_image="openshift/gluster-centos"
+openshift_storage_glusterfs_block_image="openshift/glusterblock-provisioner"
+openshift_storage_glusterfs_heketi_image="openshift/heketi"
+
+# Password Identity Provider
+# To enable it un-comment the 2 variables in place
+# Generated Password is stored in ivp-coe/.originrc_<MASTER-API-FQDN>
+# If re-installation/upgrade is run then the old file is backed up and a new password file is generated
+# ### openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/master/htpasswd'}]
+# ### openshift_master_htpasswd_file="/tmp/.authT1"
+# To pass in the system user password, uncomment the below parameter and provide the value
+# ### openshift_master_htpasswd_system_user_password=
+
+
+################################################################################################################
+
+### Standard OpenShift Router configuration FOR GlusterFS pods only ###
+###  To use the standard Openshift Origin Router on port 80/443 for GlusterFS
+###  set the value below to true
+###  WARNING !!!
+###     Make sure the below parameters don't clash with Bespoke IPFailover router (if enabled)
+###        * labels/ K=V and
+###        * `openshift_node_labels`
+
+openshift_hosted_manage_router=true
+openshift_hosted_router_selector='used_by=glusterfs'
+
+################################################################################################################
+
+### (Bespoke to CISCO) IPFailOver configuration for ipfailover/router pairs
+### These are the router/ipf pairs for pods/containers NOT for the master API
+###   NOTE !!
+###      - the difference with the standard openshift_hosted_manage_router is
+###        that this solution creates the router/ ipf pair
+###
+
+### In this section you assign router(s) with ipfailover, creating VIP(s) to front the router
+### You can setup one or more ipfailover/router pod combinations. Multiple routers cannot run on the same node.
+
+### list_item?=    | an arbitrary label used to construct the final ipfs= data structure. One per line
+### label          | a simple identifier for each ipfs ruleset. It is also the =V value in the selector K=V pair
+###                | do not change a label after it has been used (unless you manually delete the associated configuration)
+### K=V Selector   | the node selector identifying the minions the ipfailover/router pod can run on.
+### replicas       | the number of ipfailover/router pod(s) to run for this ruleset. (ideally 1 less than node set)
+### VIP(s)         | Virtual IPs to from this ruleset
+### http port      | the http port to expose and listen on for this ruleset (this could be 8080 instead of the usual 80)
+### https port     | the https port to expose and listen on for this ruleset (this could be 8443 instead of the usual 443)
+### vrrp_id_offset | a unique identify on the local subnet to prevent collisions between rulesets (value: 1 - 255) NOTE: If using multiple VIPs per routerset, ensure you don't use consecutive numbers. You need to allow the vrrp_id_offset + num of VIPs between each offset.
+### NIC            | the network interface card to listen on. (usually eth0)
+
+### Replace the above values with your own setting, DO NOT USE verbatim.
+
+### This setting removes router/ipf pairs prior to creating them, during the installation or upgrade process.
+### During this process (for instance during an upgrade) there might be a momentary loss of service.
+### We are investigating mitigating this in future releases.
+delete_ipfs_config_before_create=true
+
+
+### list_item1=[ "label", "K=V selector", replicas, "VIP(s)", http port, https port, vrrp_id_offset, "NIC" ]
+### list_item2=[ "label", "K=V selector", replicas, "VIP(s)", http port, https port, vrrp_id_offset, "NIC" ]
+### ...
+### ipfs=[ <list_item1> , <list_item2> , ... ]
+
+###############################################################################################################
+
+
+# Openshift Registry Options
+openshift_hosted_manage_registry=false
+
+# Openshift Metrics deployment (Defaults to https://hawkular-metrics.<DOMAIN>/hawkular/metrics)
+# By default Openshift Metrics are not automatically deployed, set this to enable them
+#openshift_metrics_install_metrics=true
+
+# Note that <DOMAIN> must have the same value set for 'openshift_master_default_subdomain'
+#openshift_metrics_hawkular_hostname=hawkular-metrics.<DOMAIN>                              ### SET THIS and remove this comment
+
+#openshift_metrics_image_prefix=<DEPLOYER-IP>:5000/openshift/origin-
+#openshift_metrics_image_version=v3.7.0
+
+### To enable heapster without deploying the full openshift metrics stack
+### uncomment the two lines below and remove the third line.
+#openshift_metrics_install_metrics=True
+#openshift_metrics_heapster_standalone=True
+
+#Openshift-ansible docker options get setup here:
+#Modify according to your needs
+#Defaults:
+#    log-driver:journald
+#    Log opt max size: -1 (unlimited)
+#    Log-opt max-file: 1 (after 1 log file is created it is then rolled)
+#    There is an issue with setting the max-file to be greater than 1 https://bugzilla.redhat.com/show_bug.cgi?id=1477486
+#    signature-verification If you do not sign your docker images this needs to be false
+#    bip: 172.17.0.1/16 (bip is the docker0 interface)
+openshift_docker_options="--selinux-enabled --log-driver=json-file --log-opt max-size=50m --log-opt max-file=1 --signature-verification=false --bip=172.17.0.1/16"
+
+#Unix logrotate setting.
+#Adjust according to your needs.
+#   daily     - This rotates logs each day unless other options such as size are exceeded.  Recommended to use this option
+#   rotate    - The amount of log files to rotate before removal.  The recommended setting is 10.
+#   size      - The amount the log files can grow to until they are rotated.  If you are finding that the logs are rotating too quickly due to excessive logging it may be useful to increase the file size , you must ensure your file system has the space before changing it.  The recommended setting for this is 50M.
+#   Compress  - This option compresses the logs before rotating.  Recommended to use this option.
+#   Path      - Indicates which log folders to rotate
+logrotate_scripts=[{"name": "syslog", "path": "/var/log/cron\n/var/log/maillog\n/var/log/messages\n/var/log/secure\n", "options": ["daily", "rotate 10", "size 50M", "compress", "sharedscripts", "missingok"], "scripts": {"postrotate": "/bin/kill -HUP `cat /var/run/syslogd.pid 2> /dev/null` 2> /dev/null || true"}}]
+
+# Enable service catalog
+openshift_enable_service_catalog=False
+
+# Enable template service broker (requires service catalog to be enabled, above)
+template_service_broker_install=False
+
+### openshift_portal_net is the subnet used for "services"
+### osm_cluster_network_cidr is the subnet that node subnets are allocated from (cannot be changed after deployment)
+### osm_host_subnet_length == pods/host, 10==/22, 9==/23, 8==/24 (cannot be changed after deployment)
+### Defaults:
+###    openshift_portal_net=172.30.0.0/16
+###    osm_cluster_network_cidr=10.128.0.0/16
+###    osm_host_subnet_length=9
+openshift_portal_net=172.30.0.0/16
+osm_cluster_network_cidr=10.128.0.0/16
+osm_host_subnet_length=9
+
+# Enable origin repos that point at Centos PAAS SIG, defaults to true, only used by deployment_type=origin
+# This should be false for the deployer
+openshift_enable_origin_repo=false
+
+# Origin copr repo; Setup Only if different from the yumrepo_url
+#openshift_additional_repos=[{'id': 'openshift-origin-copr', 'name': 'OpenShift Origin COPR', 'baseurl': '<YUMREPO_PAAS_URL>', 'enabled': 1, 'gpgcheck': 0}]
+
+### open_port_information
+### There are cases where it is necessary to open port(s) in the firewall by the user.
+### By defining the "open_port_information" variable as follows:
+### open_port_information=["<service name(open_port_service)>","<action(add/remove)>","<protocol(tcp/udp)>","<comma separated port list>"]
+### a rule is appended to the OS_FIREWALL_ALLOW chain in the filter table of all the minions similar to the following for every port:
+### -A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m tcp --dport 8080 -j ACCEPT
+### Example:
+###    open_port_information=["open_port_service","add","tcp","8080,9090"]
+### The above variable has to be applied to the different nodes(masters,minions,glusterfs) if needed.
+### If applied to all the masters group for instance, it will have to be defined
+### under the [master:vars]
+### If applied to individual nodes append it to the end of the node as for example:
+###    ivpcoe-master1 ansible_ssh_host=<MASTER1-IP> openshift_ip=<MASTER1-IP> openshift_public_ip=<MASTER1-IP> openshift_public_hostname=ivpcoe-master1 openshift_hostname=ivpcoe-master1 openshift_schedulable=false open_port_information="['open_port_service','remove','tcp','8080,9090']"
+###
+
+
+#host group for masters
+[masters]
+ivpcoe-master1 ansible_ssh_host=<MASTER1-IP> openshift_ip=<MASTER1-IP> openshift_public_ip=<MASTER1-IP> openshift_public_hostname=ivpcoe-master1 openshift_hostname=ivpcoe-master1 openshift_schedulable=false  ### SET THIS and remove this comment
+ivpcoe-master2 ansible_ssh_host=<MASTER2-IP> openshift_ip=<MASTER2-IP> openshift_public_ip=<MASTER2-IP> openshift_public_hostname=ivpcoe-master2 openshift_hostname=ivpcoe-master2 openshift_schedulable=false  ### SET THIS and remove this comment
+ivpcoe-master3 ansible_ssh_host=<MASTER3-IP> openshift_ip=<MASTER3-IP> openshift_public_ip=<MASTER3-IP> openshift_public_hostname=ivpcoe-master3 openshift_hostname=ivpcoe-master3 openshift_schedulable=false  ### SET THIS and remove this comment
+
+[masters:vars]
+#reboot_timeout=<TIMEOUT IN SECONDS>  ### SET THIS and remove this comment
+
+
+#host group for minions
+[minions]
+ivpcoe-node1 ansible_ssh_host=<NODE1-IP> openshift_ip=<NODE1-IP> openshift_public_ip=<NODE1-IP> openshift_public_hostname=ivpcoe-node1 openshift_hostname=ivpcoe-node1 openshift_node_labels="{'region': 'infra'}" openshift_schedulable=true  ### SET THIS and remove this comment
+ivpcoe-node2 ansible_ssh_host=<NODE2-IP> openshift_ip=<NODE2-IP> openshift_public_ip=<NODE2-IP> openshift_public_hostname=ivpcoe-node2 openshift_hostname=ivpcoe-node2 openshift_node_labels="{'region': 'infra'}" openshift_schedulable=true  ### SET THIS and remove this comment
+ivpcoe-node3 ansible_ssh_host=<NODE3-IP> openshift_ip=<NODE3-IP> openshift_public_ip=<NODE3-IP> openshift_public_hostname=ivpcoe-node3 openshift_hostname=ivpcoe-node3 openshift_node_labels="{'region': 'infra'}" openshift_schedulable=true  ### SET THIS and remove this comment
+
+[minions:vars]
+#reboot_timeout=<TIMEOUT IN SECONDS>  ### SET THIS and remove this comment
+
+
+## The [glusterfs] group is used when configuring glusterfs storage
+## Ansible will expect this block to exist in the inventory EVEN if it is empty.
+## DO NOT comment or remove [glusterfs], but it can be an empty group
+[glusterfs]
+#ivpcoe-node4 ansible_ssh_host=<NODE4-IP> openshift_ip=<NODE4-IP> openshift_hostname=ivpcoe-node4 glusterfs_devices='[ "/dev/sdc" ]' openshift_node_labels="{'used_by': 'glusterfs'}" ### SET THIS and remove this comment
+#ivpcoe-node5 ansible_ssh_host=<NODE5-IP> openshift_ip=<NODE5-IP> openshift_hostname=ivpcoe-node5 glusterfs_devices='[ "/dev/sdc" ]' openshift_node_labels="{'used_by': 'glusterfs'}" ### SET THIS and remove this comment
+#ivpcoe-node6 ansible_ssh_host=<NODE6-IP> openshift_ip=<NODE6-IP> openshift_hostname=ivpcoe-node6 glusterfs_devices='[ "/dev/sdc" ]' openshift_node_labels="{'used_by': 'glusterfs'}" ### SET THIS and remove this comment
+
+## The [gluster:vars] group is used when configuring glusterfs storage
+## Ansible will expect this block to exist in the inventory EVEN if it is empty.
+## DO NOT comment or remove [glusterfs:vars], but it can be an empty group
+[glusterfs:vars]
+#reboot_timeout=<TIMEOUT IN SECONDS>  ### SET THIS and remove this comment
+
+
+#host group for nodes
+[nodes:children]
+masters
+minions
+glusterfs
+
+[nodes:vars]
+pv_device=<DISK>  ### describe an empty disk device  ### SET THIS and remove this comment
+pv_part=<PART>    ### and partition for docker caching ### SET THIS and remove this comment
+
+
+## The [new_masters] group is used when performing a scaleup process.
+## When adding masters see [new_etcd] group too
+## Ansible will expect this block to exist in the inventory EVEN if it is empty.
+## DO NOT comment or remove [new_masters], but it can be an empty group
+[new_masters]
+
+
+## The [new_masters:vars] group is used when performing a scaleup process.
+## Ansible will expect this block to exist in the inventory EVEN if it is empty.
+## DO NOT comment or remove [new_masters:vars], but it can be an empty group
+[new_masters:vars]
+
+
+## The [new_etcd] group is used when performing a master scaleup process.
+## The 2 lines below should be commented out in all circumstances except when scaling up masters.
+## When adding masters these lines should be uncommented.
+#[new_etcd:children]
+#new_masters
+
+
+## The [new_minions] group is used when performing a scaleup process.
+## Ansible will expect this block to exist in the inventory EVEN if it is empty.
+## DO NOT comment or remove [new_minions], but it can be an empty group
+[new_minions]
+
+
+## The [new_minions:vars] group is used when performing a scaleup process.
+## Ansible will expect this block to exist in the inventory EVEN if it is empty.
+## DO NOT comment or remove [new_minions:vars], but it can be an empty group
+[new_minions:vars]
+
+
+## The [new_nodes:children] group is used when performing a scaleup process.
+## Ansible will expect this block to exist in the inventory ALWAYS.
+## DO NOT comment or remove [new_nodes:children], new_master or new_minions
+[new_nodes:children]
+new_masters
+new_minions
+
+
+## The [new_nodes:vars] group is used when performing a scaleup process.
+## Ansible will expect this block to exist in the inventory EVEN if it is empty.
+## DO NOT comment or remove [new_nodes:vars], but it can be an empty group
+[new_nodes:vars]
+#pv_device=<DISK>  ### describe an empty disk device  ### SET THIS and remove this comment
+#pv_part=<PART>    ### and partition for docker caching ### SET THIS and remove this comment
+
+
+[etcd:children]
+masters
+
+[etcd:vars]
+
+
+[lb]
+ivpcoe-lb1 ansible_ssh_host=<LB1-IP> openshift_ip=<LB1-IP> openshift_public_ip=<LB1-IP> openshift_public_hostname=ivpcoe-lb1 openshift_hostname=ivpcoe-lb1 ha_status=MASTER  ### SET THIS and remove this comment
+#ivpcoe-lb2 ansible_ssh_host=<LB2-IP> openshift_ip=<LB2-IP> openshift_public_ip=<LB2-IP> openshift_public_hostname=ivpcoe-lb2 openshift_hostname=ivpcoe-lb2 ha_status=SLAVE  ### SET THIS and remove this comment
+
+[lb:vars]
+
+
+[deployer]
+ivpcoe-deployer ansible_ssh_host=<DEPLOYER-IP> openshift_ip=<DEPLOYER-IP> openshift_hostname=ivpcoe-deployer  ### SET THIS and remove this comment
+
+[deployer:vars]
+
